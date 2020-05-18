@@ -9,5 +9,4 @@ class CliTest(unittest.TestCase):
         runner = CliRunner()
         result = runner.invoke(cli, ['version'])
         assert result.exit_code == 0
-        print(result.output)
         assert "Version not configured yet." in result.output
