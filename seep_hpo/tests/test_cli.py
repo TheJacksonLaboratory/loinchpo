@@ -1,6 +1,6 @@
 from click.testing import CliRunner
 import unittest
-from seep_hpo.main import cli
+from ..main import cli
 
 
 class CliTest(unittest.TestCase):
