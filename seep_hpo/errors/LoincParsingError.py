@@ -1,0 +1,2 @@
+class LoincParsingError(Exception):
+    pass
