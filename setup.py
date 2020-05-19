@@ -13,7 +13,6 @@ setup(name='seep_hpo',
       version='0.0.1.dev0',
       packages=find_packages(),
       install_requires=requirements,
-
       package_data={'': ['test_data/*']},
       long_description=long_description,
       long_description_content_type='text/markdown',
@@ -26,5 +25,5 @@ setup(name='seep_hpo',
       keywords='python loinc hpo',
 
       entry_points={'console_scripts': [
-          'seep-hpo = seep_hpo.main:main'
+          'seep-hpo = seep_hpo.main:cli'
       ]})
