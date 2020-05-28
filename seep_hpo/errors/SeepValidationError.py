@@ -1,0 +1,2 @@
+class SeepValidationError(Exception):
+    pass

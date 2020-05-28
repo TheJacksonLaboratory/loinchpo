@@ -1,0 +1,2 @@
+class SeepParsingError(Exception):
+    pass

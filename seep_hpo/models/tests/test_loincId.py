@@ -1,7 +1,7 @@
 import unittest
 from ddt import ddt, data, unpack
 from seep_hpo.models.LoincId import LoincId
-from seep_hpo.errors.LoincParsingError import LoincParsingError
+from seep_hpo.errors.SeepParsingError import SeepParsingError
 
 
 @ddt
@@ -17,6 +17,6 @@ class LoincIdTest(unittest.TestCase):
 
     @data("9991", "999:d", None)
     def test_loincId_fail(self, code):
-        self.assertRaises(LoincParsingError, LoincId, code)
+        self.assertRaises(SeepParsingError, LoincId, code)
 
 

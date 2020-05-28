@@ -1,0 +1,2 @@
+class SeepResolvingError(Exception):
+    pass

@@ -1,2 +1,0 @@
-class LoincParsingError(Exception):
-    pass
