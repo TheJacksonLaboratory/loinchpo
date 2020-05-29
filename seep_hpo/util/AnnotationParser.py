@@ -21,9 +21,8 @@ class AnnotationParser:
                     loinc_id, loinc_scale, system, measure, hpo_term, is_negated, created_on, \
                         created_by, last_edit_date, last_edit_by, version, finalized, comment = line
 
-                    annotations.append(LoincHpoAnnotation(loinc_id, loinc_scale,
-                                                          measure, is_negated, hpo_term, system,
-                                                          created_on,
+                    annotations.append(LoincHpoAnnotation(loinc_id, measure, is_negated, hpo_term,
+                                                          loinc_scale, system, created_on,
                                                           created_by, last_edit_date,
                                                           last_edit_by,
                                                           version, finalized, comment))
@@ -31,7 +30,6 @@ class AnnotationParser:
                 return annotations
         except (OSError, SeepParsingError, SeepValidationError) as e:
             raise e
-
 
     @staticmethod
     def parse_annotation_file_dict(file_path):
@@ -49,8 +47,8 @@ class AnnotationParser:
                     # we can make a dictionary of loincId -> List<LoincHpoAnnotation> and check
                     # if that loinc id exists and whether or not an annotation already exists.
                     # Ensures uniqueness
-                    annotation = LoincHpoAnnotation(loinc_id, loinc_scale, measure, is_negated,
-                                                    hpo_term,  system,  created_on,
+                    annotation = LoincHpoAnnotation(loinc_id, measure, is_negated,
+                                                    hpo_term, loinc_scale, system,  created_on,
                                                     created_by, last_edit_date, last_edit_by,
                                                     version, finalized, comment)
                     if loinc_id in annotations:
@@ -68,16 +66,15 @@ class AnnotationParser:
                 annotation_list = annotations[loinc_id]
                 for annotation in annotation_list:
                     if annotation.loinc_id not in remapped_annotations:
-                        remapped_annotations[annotation.loinc_id] = {str(annotation.loinc_scale): {annotation.measure: {annotation.is_negated: annotation.hpo_term}}}
+                        remapped_annotations[annotation.loinc_id] = {annotation.measure: {annotation.is_negated: annotation.hpo_term}}
                     else:
-                        if str(annotation.loinc_scale) not in remapped_annotations[annotation.loinc_id]:
-                            remapped_annotations[annotation.loinc_id][str(annotation.loinc_scale)] = {annotation.measure: {annotation.is_negated: annotation.hpo_term}}
+                        if annotation.measure not in remapped_annotations[annotation.loinc_id]:
+                            remapped_annotations[annotation.loinc_id][annotation.measure] = \
+                                {annotation.is_negated: annotation.hpo_term}
                         else:
-                            if annotation.measure not in remapped_annotations[annotation.loinc_id][str(annotation.loinc_scale)]:
-                                remapped_annotations[annotation.loinc_id][str(annotation.loinc_scale)][annotation.measure] = {annotation.is_negated: annotation.hpo_term}
-                            else:
-                                if is_negated not in remapped_annotations[annotation.loinc_id][str(annotation.loinc_scale)][annotation.measure]:
-                                    remapped_annotations[annotation.loinc_id][str(annotation.loinc_scale)][annotation.measure][is_negated] = annotation.hpo_term
+                            if is_negated not in \
+                                    remapped_annotations[annotation.loinc_id][annotation.measure]:
+                                remapped_annotations[annotation.loinc_id][annotation.measure][is_negated] = annotation.hpo_term
             return remapped_annotations
         except (OSError,  SeepParsingError, SeepValidationError) as e:
             raise e

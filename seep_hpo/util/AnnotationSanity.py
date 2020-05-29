@@ -25,6 +25,18 @@ class AnnotationSanity:
         return negated in [True, False]
 
     @staticmethod
+    def interpret_negated(loinc_id, negated):
+        negated = str(negated).upper()
+        try:
+            mapping = {"TRUE": True, "1": True, "YES": True,
+                       "FALSE": False, "0": False, "NO": False
+                       }
+            return mapping[negated]
+        except KeyError:
+            raise SeepValidationError("Invalid Negated value for Loinc Id {0} value {1}".
+                                      format(loinc_id, negated))
+
+    @staticmethod
     def check_all(loinc_id, measure):
         if not AnnotationSanity.is_loinc_id(loinc_id):
             raise SeepValidationError("Loinc Id {0} is not formatted properly `#-#`".

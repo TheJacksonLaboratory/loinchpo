@@ -17,7 +17,7 @@ class LoincScale(Enum):
     def map_loinc_scale(loinc_scale):
         try:
             return LoincScale[loinc_scale.upper()]
-        except KeyError:
+        except (KeyError, AttributeError) as e:
             return LoincScale.UNKNOWN
 
     def __str__(self):
