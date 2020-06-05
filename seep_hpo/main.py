@@ -13,7 +13,7 @@ def cli():
 @click.argument('annotation_path', type=click.Path(exists=True))
 @click.argument('query_path', type=click.Path(exists=True))
 def resolve(annotation_path, query_path):
-    """Command to resolve loinc 2 hpo mappings.
+    """Command to resolve queries to hpo codes
 
     ANNOTATION_PATH is the path to the LOINC HPO Annotation File.
     QUERY_PATH is the path to your file with Loinc Id's, Measures, Negations.

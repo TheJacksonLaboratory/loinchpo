@@ -1,14 +1,45 @@
 import csv
 from seep_hpo.errors.SeepParsingError import SeepParsingError
 from seep_hpo.errors.SeepValidationError import SeepValidationError
-from seep_hpo.models.LoincHpoAnnotation import LoincHpoAnnotation
+from seep_hpo.util.AnnotationUtility import AnnotationUtility
+from seep_hpo.models.LoincScale import LoincScale
+from collections import namedtuple
+
+LoincHpoAnnotation = namedtuple('LoincHpoAnnotation',
+                                'loinc_id, loinc_scale, system, measure, hpo_term, '
+                                'is_negated, created_on, created_by, last_edit_date, '
+                                'last_edit_by, version, finalized, comment')
 
 
 class AnnotationParser:
+    """ Provides methods for parsing Loinc2HpoAnnotation files.
+
+        Typical usage example:
+
+        annotations = AnnotationParser.parse_annotation_file(file_path)
+        annotation_map = AnnotationParser.parse_annotation_file_dict(file_path)
+
+    """
 
     @staticmethod
     def parse_annotation_file(file_path):
+        """ Parsing Loinc2HpoAnnotation files to a list of namedtuples LoincHpoAnnotation.
+
+        Args:
+            file_path: A string file path to the annotation file.
+
+        Returns:
+            A list of namedtuples 'LoincHpoAnnotation'.
+
+            [LoincHpoAnnotation, LoincHpoAnnotation]
+
+        Raises:
+            OSError: When the file could not be opened or found.
+            SeepParsingError: When there were issues with file format
+            SeepValidationError: When there were issues with specific field expected values.
+        """
         annotations = []
+
         try:
             with open(file_path) as f:
                 reader = csv.reader(f, delimiter='\t')
@@ -21,18 +52,46 @@ class AnnotationParser:
                     loinc_id, loinc_scale, system, measure, hpo_term, is_negated, created_on, \
                         created_by, last_edit_date, last_edit_by, version, finalized, comment = line
 
-                    annotations.append(LoincHpoAnnotation(loinc_id, measure, is_negated, hpo_term,
-                                                          loinc_scale, system, created_on,
-                                                          created_by, last_edit_date,
-                                                          last_edit_by,
-                                                          version, finalized, comment))
+                    # Sanity Check loinc_id and other things like in the class.
+                    AnnotationUtility.check_all(loinc_id, measure)
+                    # Parse Negation
+                    is_negated = AnnotationUtility.interpret_negated(loinc_id, is_negated)
+                    # Map the Loinc Scale
+                    loinc_scale = LoincScale.map_loinc_scale(loinc_scale)
 
+                    # Build named tuple if we are okay. Append to list.
+                    annotations.append(LoincHpoAnnotation(loinc_id, loinc_scale, system, measure,
+                                                          hpo_term, is_negated, created_on,
+                                                          created_by, last_edit_date, last_edit_by,
+                                                          version, finalized, comment))
                 return annotations
         except (OSError, SeepParsingError, SeepValidationError) as e:
             raise e
 
     @staticmethod
     def parse_annotation_file_dict(file_path):
+        """ Parsing Loinc2HpoAnnotation files to a traversable dictionary
+
+            This method has a specific return of a dictionary of dictionaries to help us query or
+            traverseannotations when resolving input queries from users.
+
+        Args:
+            file_path: A string file path to the annotation file.
+
+        Returns:
+            A dictionary of dictionaries with a specific mapping to help us query for
+            loinc code, measures and negations to get us an hpo code.
+
+            {'29298-0': {'POS': {'N': 'HP:0009281'}}}
+
+            In this example we see that a loinc_id has a measure of positive and it is not negated
+            which results in an hpo code.
+
+        Raises:
+            OSError: When the file could not be opened or found.
+            SeepParsingError: When there were issues with file format
+            SeepValidationError: When there were issues with specific field expected values.
+        """
         annotations = {}
         try:
             with open(file_path) as f:
@@ -44,11 +103,16 @@ class AnnotationParser:
                     loinc_id, loinc_scale, system, measure, hpo_term, is_negated, created_on, \
                     created_by, last_edit_date, last_edit_by, version, finalized, comment = line
 
-                    # we can make a dictionary of loincId -> List<LoincHpoAnnotation> and check
-                    # if that loinc id exists and whether or not an annotation already exists.
-                    # Ensures uniqueness
-                    annotation = LoincHpoAnnotation(loinc_id, measure, is_negated,
-                                                    hpo_term, loinc_scale, system,  created_on,
+                    # Sanity Check loinc_id and other things like in the class.
+                    AnnotationUtility.check_all(loinc_id, measure)
+                    # Parse Negation
+                    is_negated = AnnotationUtility.interpret_negated(loinc_id, is_negated)
+                    # Map the Loinc Scale
+                    loinc_scale = LoincScale.map_loinc_scale(loinc_scale)
+
+                    # Build named tuple if we are okay. Append to list.
+                    annotation = LoincHpoAnnotation(loinc_id, loinc_scale, system, measure,
+                                                    hpo_term, is_negated, created_on,
                                                     created_by, last_edit_date, last_edit_by,
                                                     version, finalized, comment)
                     if loinc_id in annotations:
@@ -62,7 +126,7 @@ class AnnotationParser:
             # loinc_id -> scale -> measure -> negated -> term
             remapped_annotations = {}
             for loinc_id in annotations:
-                # get the list,
+                # get the list
                 annotation_list = annotations[loinc_id]
                 for annotation in annotation_list:
                     if annotation.loinc_id not in remapped_annotations:

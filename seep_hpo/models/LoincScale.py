@@ -2,6 +2,9 @@ from enum import Enum, auto
 
 
 class LoincScale(Enum):
+    """ An enumeration representation for the possible loinc scale types.
+
+    """
     QN = 1, "qn"
     ORD =  2, "ord"
     ORDQN = 3, "ordqn",
@@ -12,9 +15,17 @@ class LoincScale(Enum):
     SET = 8, "set",
     UNKNOWN = auto()
 
-    # Map the LOINC scale type to enum, unknown if we don't have it.
     @staticmethod
     def map_loinc_scale(loinc_scale):
+        """Mapping loinc scale to enumeration.
+
+        Args:
+            loinc_scale: A parsed string loinc scale from LoincHpoAnnotation file.
+
+        Returns:
+            An enumeration representation of loinc_scale or enumeration unknown for those that
+            could not be mapped to an associated enumeration.
+        """
         try:
             return LoincScale[loinc_scale.upper()]
         except (KeyError, AttributeError) as e:

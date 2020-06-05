@@ -3,10 +3,7 @@ from seep_hpo.errors.SeepParsingError import SeepParsingError
 
 class LoincId:
     def __init__(self, loinc_id):
-        try:
-            self.num, self.suffix, self.loinc_id = self.parse_loinc_id(loinc_id)
-        except SeepParsingError:
-            raise
+        self.num, self.suffix, self.loinc_id = self.parse_loinc_id(loinc_id)
 
     def parse_loinc_id(self, loinc_id):
         try:
