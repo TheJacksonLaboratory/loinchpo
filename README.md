@@ -9,11 +9,11 @@ cd SeepHPO
 
 # (optional) make a virtual env
 
-python3 -m /path/to/venv/name
+python3 -m venv /path/to/venv/name
 source /path/to/venv/name/bin/activate
 
 # install the package  
-pip install .
+pip install -e .
 
 # test that it works
 seep-hpo
