@@ -1,7 +1,7 @@
 from click.testing import CliRunner
 import unittest
 import os
-from seep_hpo.main import cli
+from phenoshift.main import cli
 
 
 class CliTest(unittest.TestCase):

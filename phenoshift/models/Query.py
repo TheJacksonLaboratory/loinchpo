@@ -1,5 +1,5 @@
-from seep_hpo.util.AnnotationUtility import AnnotationUtility
-from seep_hpo.errors.SeepValidationError import SeepValidationError
+from phenoshift.util.AnnotationUtility import AnnotationUtility
+from phenoshift.errors.SeepValidationError import SeepValidationError
 
 
 class Query:

@@ -1,4 +1,4 @@
-from seep_hpo.errors.SeepValidationError import SeepValidationError
+from phenoshift.errors.SeepValidationError import SeepValidationError
 
 
 class AnnotationResolver:

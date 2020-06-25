@@ -1,8 +1,8 @@
 import csv
-from seep_hpo.errors.SeepParsingError import SeepParsingError
-from seep_hpo.errors.SeepValidationError import SeepValidationError
-from seep_hpo.util.AnnotationUtility import AnnotationUtility
-from seep_hpo.models.LoincScale import LoincScale
+from phenoshift.errors.SeepParsingError import SeepParsingError
+from phenoshift.errors.SeepValidationError import SeepValidationError
+from phenoshift.util.AnnotationUtility import AnnotationUtility
+from phenoshift.models.LoincScale import LoincScale
 from collections import namedtuple
 
 LoincHpoAnnotation = namedtuple('LoincHpoAnnotation',

@@ -1,8 +1,8 @@
 import sys
 import click
-from seep_hpo.util.AnnotationParser import AnnotationParser
-from seep_hpo.util.AnnotationResolver import AnnotationResolver
-from seep_hpo.util.QueryFileParser import QueryFileParser
+from phenoshift.util.AnnotationParser import AnnotationParser
+from phenoshift.util.AnnotationResolver import AnnotationResolver
+from phenoshift.util.QueryFileParser import QueryFileParser
 
 @click.group()
 def cli():

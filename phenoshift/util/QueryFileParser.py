@@ -1,7 +1,7 @@
 import csv
-from seep_hpo.models.Query import Query
-from seep_hpo.errors.SeepValidationError import SeepValidationError
-from seep_hpo.errors.SeepParsingError import SeepParsingError
+from phenoshift.models.Query import Query
+from phenoshift.errors.SeepValidationError import SeepValidationError
+from phenoshift.errors.SeepParsingError import SeepParsingError
 
 
 class QueryFileParser:

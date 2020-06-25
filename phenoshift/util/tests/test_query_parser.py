@@ -1,7 +1,7 @@
 import unittest
 import os
 from ddt import ddt, data
-from seep_hpo.util.QueryFileParser import QueryFileParser
+from phenoshift.util.QueryFileParser import QueryFileParser
 
 
 @ddt

@@ -1,4 +1,4 @@
-from seep_hpo.errors.SeepParsingError import SeepParsingError
+from phenoshift.errors.SeepParsingError import SeepParsingError
 
 
 class LoincId:
