@@ -1,7 +1,7 @@
 import unittest
 import os
 from ddt import ddt, data
-from phenoshift.util.AnnotationParser import AnnotationParser
+from loinchpo.util.AnnotationParser import AnnotationParser
 
 
 @ddt

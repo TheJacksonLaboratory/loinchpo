@@ -1,6 +1,6 @@
 import unittest
 from ddt import ddt, data
-from phenoshift.util.AnnotationUtility import AnnotationUtility
+from loinchpo.util.AnnotationUtility import AnnotationUtility
 
 
 @ddt

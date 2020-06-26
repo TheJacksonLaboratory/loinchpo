@@ -23,7 +23,7 @@ conda build conda_recipe
 conda build purge 
 
 # Installing recently built version
-conda install --use-local phenoshift
+conda install --use-local loinchpo
 ```
 
 

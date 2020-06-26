@@ -1,1 +1,1 @@
-"%PREFIX%\python.exe" -m unittest discover phenoshift
+"%PREFIX%\python.exe" -m unittest discover phenoloinc

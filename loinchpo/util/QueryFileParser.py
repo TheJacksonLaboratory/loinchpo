@@ -1,7 +1,7 @@
 import csv
-from phenoshift.models.Query import Query
-from phenoshift.errors.SeepValidationError import SeepValidationError
-from phenoshift.errors.SeepParsingError import SeepParsingError
+from loinchpo.models.Query import Query
+from loinchpo.errors.SeepValidationError import SeepValidationError
+from loinchpo.errors.SeepParsingError import SeepParsingError
 
 
 class QueryFileParser:

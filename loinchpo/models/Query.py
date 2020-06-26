@@ -1,5 +1,5 @@
-from phenoshift.util.AnnotationUtility import AnnotationUtility
-from phenoshift.errors.SeepValidationError import SeepValidationError
+from loinchpo.util.AnnotationUtility import AnnotationUtility
+from loinchpo.errors.SeepValidationError import SeepValidationError
 
 
 class Query:

@@ -1,4 +1,4 @@
-from phenoshift.errors.SeepParsingError import SeepParsingError
+from loinchpo.errors.SeepParsingError import SeepParsingError
 
 
 class LoincId:

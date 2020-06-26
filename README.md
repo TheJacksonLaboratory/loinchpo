@@ -1,4 +1,4 @@
-# PhenoShift
+# loinchpo
 A simple and efficient library for mapping loinc test results to hpo terms.
 
 ## Requirements
@@ -7,7 +7,7 @@ Python 3.5+
 ## Installing with pip
 
 ```bash
-pip install phenoshift
+pip install loinchpo
 ```
 
 ## Installing with Conda
@@ -18,7 +18,7 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 
 # Install the package
-conda install phenoshift
+conda install loinchpo
 ```
 
 

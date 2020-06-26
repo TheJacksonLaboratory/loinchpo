@@ -1,7 +1,7 @@
 from click.testing import CliRunner
 import unittest
 import os
-from phenoshift.main import cli
+from loinchpo.main import cli
 
 
 class CliTest(unittest.TestCase):

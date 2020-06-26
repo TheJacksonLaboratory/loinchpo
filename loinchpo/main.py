@@ -1,8 +1,8 @@
 import sys
 import click
-from phenoshift.util.AnnotationParser import AnnotationParser
-from phenoshift.util.AnnotationResolver import AnnotationResolver
-from phenoshift.util.QueryFileParser import QueryFileParser
+from loinchpo.util.AnnotationParser import AnnotationParser
+from loinchpo.util.AnnotationResolver import AnnotationResolver
+from loinchpo.util.QueryFileParser import QueryFileParser
 
 @click.group()
 def cli():

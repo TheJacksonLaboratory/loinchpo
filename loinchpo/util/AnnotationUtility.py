@@ -1,4 +1,4 @@
-from phenoshift.errors.SeepValidationError import SeepValidationError
+from loinchpo.errors.SeepValidationError import SeepValidationError
 
 
 class AnnotationUtility:

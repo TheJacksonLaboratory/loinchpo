@@ -1,9 +1,9 @@
 import os
 import unittest
 from ddt import ddt, data
-from phenoshift.util.AnnotationParser import AnnotationParser
-from phenoshift.util.AnnotationResolver import AnnotationResolver
-from phenoshift.models.Query import Query
+from loinchpo.util.AnnotationParser import AnnotationParser
+from loinchpo.util.AnnotationResolver import AnnotationResolver
+from loinchpo.models.Query import Query
 
 @ddt
 class AnnotationResolverTest(unittest.TestCase):
