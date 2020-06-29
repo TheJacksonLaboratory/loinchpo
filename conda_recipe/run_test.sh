@@ -1,1 +1,1 @@
-"${PREFIX}/bin/python" -m unittest discover phenoloinc
+"${PREFIX}/bin/python" -m unittest discover loinchpo
