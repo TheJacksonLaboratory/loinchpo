@@ -1,8 +1,8 @@
 import csv
-from seep_hpo.errors.SeepParsingError import SeepParsingError
-from seep_hpo.errors.SeepValidationError import SeepValidationError
-from seep_hpo.util.AnnotationUtility import AnnotationUtility
-from seep_hpo.models.LoincScale import LoincScale
+from loinchpo.errors.SeepParsingError import SeepParsingError
+from loinchpo.errors.SeepValidationError import SeepValidationError
+from loinchpo.util.AnnotationUtility import AnnotationUtility
+from loinchpo.models.LoincScale import LoincScale
 from collections import namedtuple
 
 LoincHpoAnnotation = namedtuple('LoincHpoAnnotation',

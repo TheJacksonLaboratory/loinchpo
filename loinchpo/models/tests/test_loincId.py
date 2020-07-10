@@ -1,7 +1,7 @@
 import unittest
 from ddt import ddt, data, unpack
-from seep_hpo.models.LoincId import LoincId
-from seep_hpo.errors.SeepParsingError import SeepParsingError
+from loinchpo.models.LoincId import LoincId
+from loinchpo.errors.SeepParsingError import SeepParsingError
 
 
 @ddt

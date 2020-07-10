@@ -1,7 +1,7 @@
 import csv
-from seep_hpo.models.Query import Query
-from seep_hpo.errors.SeepValidationError import SeepValidationError
-from seep_hpo.errors.SeepParsingError import SeepParsingError
+from loinchpo.models.Query import Query
+from loinchpo.errors.SeepValidationError import SeepValidationError
+from loinchpo.errors.SeepParsingError import SeepParsingError
 
 
 class QueryFileParser:

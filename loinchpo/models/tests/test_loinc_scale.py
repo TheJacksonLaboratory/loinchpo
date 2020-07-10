@@ -1,6 +1,6 @@
 import unittest
 from ddt import ddt, data, unpack
-from seep_hpo.models.LoincScale import LoincScale
+from loinchpo.models.LoincScale import LoincScale
 
 
 @ddt

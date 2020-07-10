@@ -1,5 +1,5 @@
-from seep_hpo.util.AnnotationUtility import AnnotationUtility
-from seep_hpo.errors.SeepValidationError import SeepValidationError
+from loinchpo.util.AnnotationUtility import AnnotationUtility
+from loinchpo.errors.SeepValidationError import SeepValidationError
 
 
 class Query:

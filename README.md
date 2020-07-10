@@ -1,29 +1,30 @@
-# loinc2hpoPy
-Python 3 Version of LOINC2HPO
+# loinchpo
+A simple and efficient library for mapping loinc test results to hpo terms.
 
-## How to install
+## Requirements
+Python 3.5+
 
-Install the package by running:
+## Installing with pip
+
 ```bash
-cd SeepHPO
-
-# (optional) make a virtual env
-
-python3 -m venv /path/to/venv/name
-source /path/to/venv/name/bin/activate
-
-# install the package  
-pip install -e .
-
-# test that it works
-seep-hpo
+pip install loinchpo
 ```
 
-## Run tests
+## Installing with Conda
 
-Run tests after installation by executing the following:
 ```bash
-cd SeepHPO
+# Ensure conda-forge is in your channels
+conda config --add channels conda-forge
+conda config --set channel_priority strict
 
-python -m unittest discover
+# Install the package
+conda install loinchpo
 ```
+
+
+
+
+
+
+
+

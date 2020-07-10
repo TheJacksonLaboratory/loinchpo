@@ -1,4 +1,4 @@
-from seep_hpo.errors.SeepValidationError import SeepValidationError
+from loinchpo.errors.SeepValidationError import SeepValidationError
 
 
 class AnnotationResolver:
