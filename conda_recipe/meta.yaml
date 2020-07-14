@@ -1,5 +1,5 @@
 {% set name = "loinchpo" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a445727ca97c0d695e8e2aa281c654bbc977fb6df82d0e8eea2fed28b9ea559c
+  sha256: e6b12bcde2a963383c18fee8824d2aa22275724b33b41852e44facd886b3af7e
 
 build:
   noarch: python
@@ -21,11 +21,13 @@ requirements:
   run:
     - python >=3.5
     - click
+    - pandas
 
 test:
   requires:
     - ddt
     - setuptools
+    - pandas
   imports:
     - loinchpo.models
     - loinchpo.util
