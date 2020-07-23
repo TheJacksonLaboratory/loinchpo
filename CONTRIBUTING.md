@@ -31,3 +31,13 @@ conda install --use-local loinchpo
 ```bash
 # https://conda-forge.org/#contribute
 ```
+
+#### PyPi
+```bash
+    python3 setup.py sdist bdist_wheel
+```
+
+#### Deploying
+```bash
+    python3 -m twine upload dist/*
+```
