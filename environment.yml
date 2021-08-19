@@ -1,0 +1,28 @@
+name: seep
+channels:
+  - local
+  - conda-forge
+  - defaults
+dependencies:
+  - ca-certificates=2020.4.5.2=hecda079_0
+  - certifi=2020.4.5.2=py36h9f0ad1d_0
+  - click=7.1.2=py_0
+  - ddt=1.4.1=pyh9f0ad1d_0
+  - libcxx=10.0.0=1
+  - libedit=3.1.20181209=hb402a30_0
+  - libffi=3.3=h0a44026_1
+  - ncurses=6.2=h0a44026_1
+  - openssl=1.1.1g=h0b31af3_0
+  - pip=20.1.1=py36_1
+  - python=3.6.10=hf48f09d_2
+  - python_abi=3.6=1_cp36m
+  - readline=8.0=h1de35cc_0
+  - seep-hpo=0.0.1.dev0=py36_0
+  - setuptools=47.3.0=py36_0
+  - sqlite=3.31.1=h5c1f38d_1
+  - tk=8.6.8=ha441bb4_0
+  - wheel=0.34.2=py36_0
+  - xz=5.2.5=h1de35cc_0
+  - zlib=1.2.11=h1de35cc_3
+prefix: /usr/local/anaconda3/envs/seep
+

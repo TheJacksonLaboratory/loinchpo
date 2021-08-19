@@ -1,0 +1,48 @@
+{% set name = "loinchpo" %}
+{% set version = "1.0.3" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: e6b12bcde2a963383c18fee8824d2aa22275724b33b41852e44facd886b3af7e
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - python >=3.5
+    - pip
+  run:
+    - python >=3.5
+    - click
+    - pandas
+
+test:
+  requires:
+    - ddt
+    - setuptools
+    - pandas
+  imports:
+    - loinchpo.models
+    - loinchpo.util
+    - loinchpo.errors
+    - loinchpo
+
+about:
+  home: https://github.com/TheJacksonLaboratory/loinchpo
+  summary: 'Simple & Efficient Loinc To HPO for Python'
+  license: GPL-3.0
+  license_file: LICENSE.txt
+  description: |
+    loinchpo is a simple and efficient library for mapping loinc test results
+    to hpo terms. Pure python, 3.5+
+
+extra:
+  recipe-maintainers:
+    - iimpulse
