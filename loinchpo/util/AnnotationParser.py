@@ -1,6 +1,6 @@
 import csv
-from loinchpo.errors.SeepParsingError import SeepParsingError
-from loinchpo.errors.SeepValidationError import SeepValidationError
+from loinchpo.errors.LoincHpoParsingError import LoincHpoParsingError
+from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
 from loinchpo.util.AnnotationUtility import AnnotationUtility
 from loinchpo.models.LoincScale import LoincScale
 from collections import namedtuple
@@ -47,7 +47,7 @@ class AnnotationParser:
                 fields = next(reader)
                 # Throw exception if it doesnt look like header line.
                 if "loincId" not in fields:
-                    raise SeepParsingError("Header Line not Loinc2Hpo annotation file.")
+                    raise LoincHpoParsingError("Header Line not Loinc2Hpo annotation file.")
                 for line in reader:
                     loinc_id, loinc_scale, system, measure, hpo_term, is_negated, created_on, \
                         created_by, last_edit_date, last_edit_by, version, finalized, comment = line
@@ -65,7 +65,7 @@ class AnnotationParser:
                                                           created_by, last_edit_date, last_edit_by,
                                                           version, finalized, comment))
                 return annotations
-        except (OSError, SeepParsingError, SeepValidationError) as e:
+        except (OSError, LoincHpoParsingError, LoincHpoValidationError) as e:
             raise e
 
     @staticmethod
@@ -98,7 +98,7 @@ class AnnotationParser:
                 reader = csv.reader(f, delimiter='\t')
                 fields = next(reader)
                 if "loincId" not in fields:
-                    raise SeepParsingError("Header Line not Loinc2Hpo annotation file.")
+                    raise LoincHpoParsingError("Header Line not Loinc2Hpo annotation file.")
                 for line in reader:
                     loinc_id, loinc_scale, system, measure, hpo_term, is_negated, created_on, \
                     created_by, last_edit_date, last_edit_by, version, finalized, comment = line
@@ -117,7 +117,7 @@ class AnnotationParser:
                                                     version, finalized, comment)
                     if loinc_id in annotations:
                         if annotation in annotations[loinc_id]:
-                            raise SeepParsingError("Duplicate annotation exists for loinc code.")
+                            raise LoincHpoParsingError("Duplicate annotation exists for loinc code.")
                         else:
                             annotations[loinc_id].append(annotation)
                     else:
@@ -140,7 +140,7 @@ class AnnotationParser:
                                     remapped_annotations[annotation.loinc_id][annotation.measure]:
                                 remapped_annotations[annotation.loinc_id][annotation.measure][is_negated] = annotation.hpo_term
             return remapped_annotations
-        except (OSError,  SeepParsingError, SeepValidationError) as e:
+        except (OSError, LoincHpoParsingError, LoincHpoValidationError) as e:
             raise e
 
     @staticmethod
@@ -173,7 +173,7 @@ class AnnotationParser:
         try:
             cols = df.columns
             if not all(col in expected_fields for col in cols):
-                raise SeepParsingError("Dataframe columns not correct, must be (loincId	loincScale	system	code " + 
+                raise LoincHpoParsingError("Dataframe columns not correct, must be (loincId	loincScale	system	code " +
                     "hpoTermId	isNegated	createdOn	createdBy	lastEditedOn	lastEditedBy	version	isFinalized	comment)")
             for row in df.iterrows():
                 loinc_id, loinc_scale, system, measure, hpo_term, is_negated, created_on, \
@@ -193,7 +193,7 @@ class AnnotationParser:
                                                 version, finalized, comment)
                 if loinc_id in annotations:
                     if annotation in annotations[loinc_id]:
-                        raise SeepParsingError("Duplicate annotation exists for loinc code.")
+                        raise LoincHpoParsingError("Duplicate annotation exists for loinc code.")
                     else:
                         annotations[loinc_id].append(annotation)
                 else:
@@ -216,7 +216,7 @@ class AnnotationParser:
                                     remapped_annotations[annotation.loinc_id][annotation.measure]:
                                 remapped_annotations[annotation.loinc_id][annotation.measure][is_negated] = annotation.hpo_term
             return remapped_annotations
-        except (OSError,  SeepParsingError, SeepValidationError) as e:
+        except (OSError, LoincHpoParsingError, LoincHpoValidationError) as e:
             raise e
 
 

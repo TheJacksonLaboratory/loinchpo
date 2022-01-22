@@ -1,4 +1,4 @@
-class SeepParsingError(Exception):
+class LoincHpoParsingError(Exception):
     """Custom parsing exception when parsing LoincHpoAnnotationFiles.
 
     """

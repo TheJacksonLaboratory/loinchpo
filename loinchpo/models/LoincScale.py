@@ -28,7 +28,7 @@ class LoincScale(Enum):
         """
         try:
             return LoincScale[loinc_scale.upper()]
-        except (KeyError, AttributeError) as e:
+        except (KeyError, AttributeError):
             return LoincScale.UNKNOWN
 
     def __str__(self):

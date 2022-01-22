@@ -1,5 +1,5 @@
 from loinchpo.util.AnnotationUtility import AnnotationUtility
-from loinchpo.errors.SeepValidationError import SeepValidationError
+from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
 
 
 class Query:
@@ -7,7 +7,7 @@ class Query:
         try:
             AnnotationUtility.check_all(loinc_id, measure)
             self.loinc_id = loinc_id
-            self.measure = measure
+            self.measure = measure.upper()
             self.negated = AnnotationUtility.interpret_negated(self.loinc_id, negated)
-        except SeepValidationError as e:
+        except LoincHpoValidationError as e:
             raise e
