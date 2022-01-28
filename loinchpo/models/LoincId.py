@@ -1,4 +1,4 @@
-from loinchpo.errors.SeepParsingError import SeepParsingError
+from loinchpo.errors.LoincHpoParsingError import LoincHpoParsingError
 
 
 class LoincId:
@@ -10,4 +10,4 @@ class LoincId:
             num, suffix = loinc_id.split("-")
             return num, suffix, loinc_id
         except (ValueError, AttributeError):
-            raise SeepParsingError("Malformed Loinc code {0}".format(loinc_id))
+            raise LoincHpoParsingError("Malformed Loinc code {0}".format(loinc_id))

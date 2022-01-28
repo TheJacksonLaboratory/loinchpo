@@ -1,7 +1,7 @@
 import csv
 from loinchpo.models.Query import Query
-from loinchpo.errors.SeepValidationError import SeepValidationError
-from loinchpo.errors.SeepParsingError import SeepParsingError
+from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
+from loinchpo.errors.LoincHpoParsingError import LoincHpoParsingError
 
 
 class QueryFileParser:
@@ -34,5 +34,5 @@ class QueryFileParser:
                     loinc_id, measure, negated = line
                     queries.append(Query(loinc_id, measure, negated))
             return queries
-        except (OSError,  SeepParsingError, SeepValidationError) as e:
+        except (OSError, LoincHpoParsingError, LoincHpoValidationError) as e:
             raise e

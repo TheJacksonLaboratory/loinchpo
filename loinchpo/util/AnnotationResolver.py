@@ -1,4 +1,4 @@
-from loinchpo.errors.SeepValidationError import SeepValidationError
+from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
 
 
 class AnnotationResolver:
@@ -30,5 +30,5 @@ class AnnotationResolver:
         try:
             # Transform inputs into expectations
             return self.annotations[query.loinc_id][query.measure][query.negated]
-        except (KeyError, SeepValidationError):
+        except (KeyError, LoincHpoValidationError):
             return ""

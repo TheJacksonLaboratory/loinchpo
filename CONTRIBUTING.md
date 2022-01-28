@@ -16,6 +16,10 @@ conda env export > environment.yml
 ##### Building for conda-forge
 ```bash
 
+# Set conda forge
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+
 # Will run tests and prepore for the forge
 conda build conda_recipe
 

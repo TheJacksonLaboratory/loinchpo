@@ -1,4 +1,4 @@
-class SeepValidationError(Exception):
+class LoincHpoValidationError(Exception):
     """Custom exception when validating fields from a LoincHpoAnnotation files
 
     """
