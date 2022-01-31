@@ -3,11 +3,10 @@ from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
 
 
 class Query:
-    def __init__(self, loinc_id, measure, negated):
+    def __init__(self, loinc_id, outcome):
         try:
-            AnnotationUtility.check_all(loinc_id, measure)
+            AnnotationUtility.check_all(loinc_id, outcome)
             self.loinc_id = loinc_id
-            self.measure = measure.upper()
-            self.negated = AnnotationUtility.interpret_negated(self.loinc_id, negated)
+            self.outcome = outcome.upper()
         except LoincHpoValidationError as e:
             raise e
