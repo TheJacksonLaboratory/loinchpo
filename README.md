@@ -31,12 +31,10 @@ Just three steps and you should be able to map your loinc codes to hpo.
     # returns a list of the annotations
     annotations = AnnotationParser.parse_annotation_file(annotation_path)
 ```
-or
 ```python
     # returns a dictionary query mapper
-    annotations = AnnotationParser.parse_annotation_file(annotation_path)
+    annotations = AnnotationParser.parse_annotation_file_dict(annotation_path)
 ```
-or
 ```python
     # returns a dictionary query mapper from a pandas dataframe
     annotations = AnnotationParser.parse_annotation_pandas(dataframe)
@@ -47,7 +45,6 @@ or
     # file path returns a list of queries
     queries = QueryFileParser.parse(query_path)
 ```
-or
 ```python
     # single query
     query = Query(loinc_id, outcome)
