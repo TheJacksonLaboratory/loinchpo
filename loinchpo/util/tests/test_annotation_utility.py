@@ -14,4 +14,4 @@ class AnnotationSanityTest(unittest.TestCase):
     @data(("NEG", True), ("POS", True), ("H", True), ("X", False),
           ("", False), (None, False))
     def test_measure(self, item):
-        self.assertEqual(AnnotationUtility.is_measure(item[0]), item[1])
+        self.assertEqual(AnnotationUtility.is_outcome(item[0]), item[1])

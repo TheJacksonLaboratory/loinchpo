@@ -1,5 +1,5 @@
-loincId	loincScale	system	code	hpoTermId	isNegated	createdOn	createdBy	lastEditedOn	lastEditedBy	version	isFinalized	comment
-2823-3	Qn	FHIR	N	HP:0011042	true	2018-03-20T15:34:05	JGM:Aaron	NA	NA	0.1	true	NA
-2823-3	Qn	FHIR	H	HP:0011042	true	2018-03-20T15:34:05	JGM:Aaron	NA	NA	0.1	true	NA
-5803-2	Qn	FHIR	H	HP:0032369	false	2018-04-24T13:39:03	OHSU:JP	2019-02-23T15:07:22	UCD:tjcallahan	0.2	true	NA
-2091-7	Qn	FHIR	H	HP:0003362	false	2018-04-24T14:11:26	OHSU:JP	NA	NA	0.1	true	NA
+loincId	loincScale	code	hpoTermId	suuplementalTermId	curators	comment
+2823-3	Qn	N	HP:0011042	.	JGM:Aaron	NA
+2823-3	Qn	H	HP:0011042	.	JGM:Aaron	NA
+5803-2	Qn	H	HP:0032369	.	OHSU:JP;UCD:tjcallahan	NA
+2091-7	Qn	H	HP:0003362	.	OHSU:JP	NA

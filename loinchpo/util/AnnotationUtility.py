@@ -27,62 +27,37 @@ class AnnotationUtility:
         return loinc_pieces[0].isdigit() and loinc_pieces[1].isdigit()
 
     @staticmethod
-    def is_measure(measure):
+    def is_outcome(outcome):
         """Determines whether or not the argument is a valid measure value.
 
         Args:
-            measure: An observed measure for a loinc code.
+            outcome: An observed outcome for a loinc test.
 
         Returns:
-            Boolean whether or not we accept the allowed values for measures.
+            Boolean whether or not we accept the allowed values for provided outcome.
         """
-        return measure is not None and measure.upper() in {"NEG", "POS", "H", "L", "N", "NEGATIVE", "POSITIVE",
+        return outcome is not None and outcome.upper() in {"NEG", "POS", "H", "L", "N", "NEGATIVE", "POSITIVE",
                                                            "HIGH", "LOW", "NORMAL"}
 
     @staticmethod
-    def is_negated(negated):
-        return negated in {True, False}
-
-    @staticmethod
-    def interpret_negated(loinc_id, negated):
-        """Parses negation value to python boolean.
-        Based on observable negation values we return its boolean mapping.
-        Args:
-            loinc_id: A string loinc id for the associated negation.
-            negated: A boolean for whether or not this loinc_id is negated.
-        Returns:
-            Boolean whether or not we accept the allowed values for measures.
-        Raises:
-            SeepValidationError: An error while validating or mapping the input to a boolean.
-        """
-        negated = str(negated).upper()
-        try:
-            mapping = {"TRUE": True, "1": True, "YES": True,
-                       "FALSE": False, "0": False, "NO": False
-                       }
-            return mapping[negated]
-        except KeyError:
-            raise ("Invalid Negated value for Loinc Id {0} value {1}".
-                   format(loinc_id, negated))
-
-    @staticmethod
-    def check_all(loinc_id, measure):
-        """Checks both loinc_id and measure for consistency.
+    def check_all(loinc_id, outcome):
+        """Checks both loinc_id, loinc_scale, outcome for consistency.
 
         Based on observable negation values we return its boolean mapping.
 
         Args:
             loinc_id: A string loinc id
-            measure: A string for the observed measure
+            loinc_scale: A LoincScale enumeration
+            outcome: A string for the interpreted outcome for the loinc test
 
         Raises:
-            SeepValidationError: An error while validating or mapping the loinc id or observed
+            LoincHpoValidationError: An error while validating or mapping the loinc id or observed
             measure
         """
         if not AnnotationUtility.is_loinc_id(loinc_id):
             raise LoincHpoValidationError("Loinc Id {0} is not formatted properly `#-#`".
                                           format(loinc_id))
-        elif not AnnotationUtility.is_measure(measure):
-            raise LoincHpoValidationError("Invalid measure for Loinc Id {0} with value '{1}' must be "
+        elif not AnnotationUtility.is_outcome(outcome):
+            raise LoincHpoValidationError("Invalid outcome for Loinc Id {0} with value '{1}' must be "
                                           "one of [NEGATIVE, NEG], [POS, POSITIVE], [H, HIGH], [L,LOW], [N,NORMAL]."
-                                          .format(loinc_id, measure))
+                                          .format(loinc_id, outcome))

@@ -7,7 +7,7 @@ class AnnotationResolver:
         Example:
             annotations = AnnotationParser.parse_annotation_file_dict(file_path)
             resolver = AnnotationResolver(annotations)
-            query = Query(loinc_id, measure, negated)
+            query = Query(loinc_id, outcome)
             single_hpo_code = resolver.resolve(query)
 
 
@@ -29,6 +29,6 @@ class AnnotationResolver:
         """
         try:
             # Transform inputs into expectations
-            return self.annotations[query.loinc_id][query.measure][query.negated]
+            return self.annotations[query.loinc_id][query.outcome]
         except (KeyError, LoincHpoValidationError):
             return ""
