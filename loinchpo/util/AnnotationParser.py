@@ -118,7 +118,7 @@ class AnnotationParser:
             raise e
 
     @staticmethod
-    def parse_annotation_pandas_dict(df):
+    def parse_annotation_pandas(df):
         """ Parsing Loinc2HpoAnnotation pandas to a traversable dictionary
 
             This method has a specific return of a dictionary of dictionaries to help us query or
