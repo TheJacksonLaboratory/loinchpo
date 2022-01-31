@@ -28,7 +28,6 @@ class AnnotationResolver:
             A single string hpo code or empty string if no annotation found.
         """
         try:
-            # Transform inputs into expectations
             return self.annotations[query.loinc_id][query.outcome]
         except (KeyError, LoincHpoValidationError):
             return ""

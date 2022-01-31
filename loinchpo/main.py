@@ -29,8 +29,6 @@ def resolve(annotation_path, query_path):
         result = resolver.resolve(query)
         print(result)
     click.echo("Done.")
-    # Then we need to read in the queries. For each query we will call the resolver.
-    # Then write a reporter to report our findings in different formats.
 
 
 @cli.command()
