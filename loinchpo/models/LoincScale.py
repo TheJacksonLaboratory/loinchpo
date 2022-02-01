@@ -1,12 +1,14 @@
 from enum import Enum, auto
 
+from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
+
 
 class LoincScale(Enum):
     """ An enumeration representation for the possible loinc scale types.
 
     """
     QN = 1, "qn"
-    ORD =  2, "ord"
+    ORD = 2, "ord"
     ORDQN = 3, "ordqn",
     NOM = 4, "nom",
     NAR = 5, "nar",
@@ -15,8 +17,8 @@ class LoincScale(Enum):
     SET = 8, "set",
     UNKNOWN = auto()
 
-    @staticmethod
-    def map_loinc_scale(loinc_scale):
+    @classmethod
+    def parse(cls, loinc_scale):
         """Mapping loinc scale to enumeration.
 
         Args:
@@ -29,7 +31,7 @@ class LoincScale(Enum):
         try:
             return LoincScale[loinc_scale.upper()]
         except (KeyError, AttributeError):
-            return LoincScale.UNKNOWN
+            return cls.UNKNOWN
 
     def __str__(self):
         if self == LoincScale.QN:
