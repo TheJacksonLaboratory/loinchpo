@@ -7,6 +7,6 @@ class Query:
         try:
             Utility.check_all(loinc_id, outcome)
             self.loinc_id = loinc_id
-            self.outcome = Utility.parse_outcome(outcome.upper())
+            self.outcome = Utility.parse_outcome(outcome)
         except LoincHpoValidationError as e:
             raise e

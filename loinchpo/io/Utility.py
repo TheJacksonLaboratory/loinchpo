@@ -41,6 +41,7 @@ class Utility:
 
     @staticmethod
     def parse_outcome(outcome):
+        outcome = outcome.upper()
         if outcome == "NEG" or outcome == "NEGATIVE":
             return "NEG"
         elif outcome == "POS" or outcome == "POSITIVE":
