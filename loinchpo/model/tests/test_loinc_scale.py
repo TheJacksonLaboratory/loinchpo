@@ -1,6 +1,6 @@
 import unittest
 from ddt import ddt, data, unpack
-from loinchpo.models.LoincScale import LoincScale
+from loinchpo.model.LoincScale import LoincScale
 
 
 @ddt

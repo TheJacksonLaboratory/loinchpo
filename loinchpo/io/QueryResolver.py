@@ -1,7 +1,7 @@
-from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
+from loinchpo.error.LoincHpoValidationError import LoincHpoValidationError
 
 
-class AnnotationResolver:
+class QueryResolver:
     """ Resolve annotation queries to hpo codes
 
         Example:
@@ -27,6 +27,7 @@ class AnnotationResolver:
         Returns:
             A single string hpo code or empty string if no annotation found.
         """
+
         try:
             return self.annotations[query.loinc_id][query.outcome]
         except (KeyError, LoincHpoValidationError):

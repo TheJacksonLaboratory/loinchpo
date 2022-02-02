@@ -1,8 +1,8 @@
 import sys
 import click
-from loinchpo.util.AnnotationParser import AnnotationParser
-from loinchpo.util.AnnotationResolver import AnnotationResolver
-from loinchpo.util.QueryFileParser import QueryFileParser
+from loinchpo.io.AnnotationParser import AnnotationParser
+from loinchpo.io.QueryResolver import QueryResolver
+from loinchpo.io.QueryFileParser import QueryFileParser
 
 @click.group()
 def cli():
@@ -23,7 +23,7 @@ def resolve(annotation_path, query_path):
     click.echo(click.format_filename(query_path))
     annotations = AnnotationParser.parse_annotation_file_dict(annotation_path)
     queries = QueryFileParser.parse(query_path)
-    resolver = AnnotationResolver(annotations)
+    resolver = QueryResolver(annotations)
     click.echo("Resolving your queries...")
     for query in queries:
         result = resolver.resolve(query)

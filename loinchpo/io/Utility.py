@@ -1,7 +1,7 @@
-from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
+from loinchpo.error.LoincHpoValidationError import LoincHpoValidationError
 
 
-class AnnotationUtility:
+class Utility:
     """A utility class for helping to parse LoincHpoAnnotation
 
     This class contains static methods to validate or map fields relevant to a LoincHpoAnnotation
@@ -40,6 +40,20 @@ class AnnotationUtility:
                                                            "HIGH", "LOW", "NORMAL"}
 
     @staticmethod
+    def parse_outcome(outcome):
+        outcome = outcome.upper()
+        if outcome == "NEG" or outcome == "NEGATIVE":
+            return "NEG"
+        elif outcome == "POS" or outcome == "POSITIVE":
+            return "POS"
+        elif outcome == "H" or outcome == "HIGH":
+            return "H"
+        elif outcome == "L" or outcome == "LOW":
+            return "L"
+        elif outcome == "N" or outcome == "NORMAL":
+            return "N"
+
+    @staticmethod
     def check_all(loinc_id, outcome):
         """Checks both loinc_id, loinc_scale, outcome for consistency.
 
@@ -54,10 +68,10 @@ class AnnotationUtility:
             LoincHpoValidationError: An error while validating or mapping the loinc id or observed
             measure
         """
-        if not AnnotationUtility.is_loinc_id(loinc_id):
+        if not Utility.is_loinc_id(loinc_id):
             raise LoincHpoValidationError("Loinc Id {0} is not formatted properly `#-#`".
                                           format(loinc_id))
-        elif not AnnotationUtility.is_outcome(outcome):
+        elif not Utility.is_outcome(outcome):
             raise LoincHpoValidationError("Invalid outcome for Loinc Id {0} with value '{1}' must be "
                                           "one of [NEGATIVE, NEG], [POS, POSITIVE], [H, HIGH], [L,LOW], [N,NORMAL]."
                                           .format(loinc_id, outcome))

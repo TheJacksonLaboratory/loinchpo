@@ -1,4 +1,4 @@
-from loinchpo.errors.LoincHpoParsingError import LoincHpoParsingError
+from loinchpo.error.LoincHpoParsingError import LoincHpoParsingError
 
 
 class LoincId:

@@ -2,7 +2,7 @@ import unittest
 import os
 from ddt import ddt, data
 import pandas as pd
-from loinchpo.util.AnnotationParser import AnnotationParser
+from loinchpo.io.AnnotationParser import AnnotationParser
 
 
 @ddt

@@ -1,7 +1,7 @@
 import csv
-from loinchpo.models.Query import Query
-from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
-from loinchpo.errors.LoincHpoParsingError import LoincHpoParsingError
+from loinchpo.model.Query import Query
+from loinchpo.error.LoincHpoValidationError import LoincHpoValidationError
+from loinchpo.error.LoincHpoParsingError import LoincHpoParsingError
 
 
 class QueryFileParser:
