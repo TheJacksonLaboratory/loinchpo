@@ -52,7 +52,7 @@ Just three steps and you should be able to map your loinc codes to hpo.
 ### 3. Resolve the hpo term
 ```python
     # Resolve the hpo term.
-    resolver = AnnotationResolver(annotations)
+    resolver = QueryResolver(annotations)
     hpo_term = resolver.resolve(query)
 ```
 

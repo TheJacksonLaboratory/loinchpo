@@ -1,8 +1,8 @@
 import csv
-from loinchpo.errors.LoincHpoParsingError import LoincHpoParsingError
-from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
-from loinchpo.util.AnnotationUtility import AnnotationUtility
-from loinchpo.models.LoincScale import LoincScale
+from loinchpo.error.LoincHpoParsingError import LoincHpoParsingError
+from loinchpo.error.LoincHpoValidationError import LoincHpoValidationError
+from loinchpo.io.Utility import Utility
+from loinchpo.model.LoincScale import LoincScale
 from collections import namedtuple
 
 LoincHpoAnnotation = namedtuple('LoincHpoAnnotation',
@@ -42,21 +42,17 @@ class AnnotationParser:
         try:
             with open(file_path) as f:
                 reader = csv.reader(f, delimiter='\t')
-                # Skip first line
                 fields = next(reader)
-                # Throw exception if it doesnt look like header line.
+
                 if "loincId" not in fields:
                     raise LoincHpoParsingError("Header Line not Loinc2Hpo annotation file.")
                 for line in reader:
                     loinc_id, loinc_scale, outcome, hpo_term, supplemental_term, curators, comment = line
 
-                    # Sanity Check loinc_id and other things like in the class.
-                    AnnotationUtility.check_all(loinc_id, outcome)
-
-                    # Map the Loinc Scale
+                    Utility.check_all(loinc_id, outcome)
                     loinc_scale = LoincScale.parse(loinc_scale)
+                    outcome = Utility.parse_outcome(outcome)
 
-                    # Build named tuple if we are okay. Append to list.
                     annotations.append(LoincHpoAnnotation(loinc_id, loinc_scale, outcome,
                                                           hpo_term, supplemental_term, curators, comment))
                 return annotations
@@ -97,13 +93,10 @@ class AnnotationParser:
                 for line in reader:
                     loinc_id, loinc_scale, outcome, hpo_term, supplemental_term, curators, comment = line
 
-                    # Sanity Check loinc_id and other things like in the class.
-                    AnnotationUtility.check_all(loinc_id, outcome)
-
-                    # Map the Loinc Scale
+                    Utility.check_all(loinc_id, outcome)
                     loinc_scale = LoincScale.parse(loinc_scale)
+                    outcome = Utility.parse_outcome(outcome)
 
-                    # Build named tuple if we are okay. Append to list.
                     annotation = LoincHpoAnnotation(loinc_id, loinc_scale, outcome, hpo_term, supplemental_term,
                                                     curators, comment)
                     if loinc_id in annotations:
@@ -152,13 +145,10 @@ class AnnotationParser:
             for row in df.iterrows():
                 loinc_id, loinc_scale, outcome, hpo_term, supplemental_term, curators, comment = row[1].tolist()
 
-                # Map the loinc scale
                 loinc_scale = LoincScale.parse(loinc_scale)
+                Utility.check_all(loinc_id, outcome)
+                outcome = Utility.parse_outcome(outcome)
 
-                # Sanity Check loinc_id and other things like in the class.
-                AnnotationUtility.check_all(loinc_id, outcome)
-
-                # Build named tuple if we are okay. Append to list.
                 annotation = LoincHpoAnnotation(loinc_id, loinc_scale, outcome, hpo_term, supplemental_term, curators,
                                                 comment)
                 if loinc_id in annotations:

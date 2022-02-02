@@ -1,5 +1,5 @@
 {% set name = "loinchpo" %}
-{% set version = "1.1.0" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -29,9 +29,9 @@ test:
     - setuptools
     - pandas
   imports:
-    - loinchpo.models
-    - loinchpo.util
-    - loinchpo.errors
+    - loinchpo.model
+    - loinchpo.io
+    - loinchpo.error
     - loinchpo
 
 about:
