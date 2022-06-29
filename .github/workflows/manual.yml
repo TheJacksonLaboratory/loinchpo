@@ -22,13 +22,11 @@ jobs:
 
     - name: Build documentation.
       run: |
-        mkdir gh-pages
-        touch gh-pages/.nojekyll
-        ls
+        python3 -c "import sys; print('\n'.join(sys.path))"
         sphinx-apidoc -f -o docs/source/ loinchpo "**/tests/*"
         cd docs/
-        ls
         sphinx-build -b html . _build
+        touch _build/.nojekyll
 
     - name: Deploy documentation.
       if: ${{ github.event_name == 'push' }}
