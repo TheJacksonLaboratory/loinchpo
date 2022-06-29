@@ -1,7 +1,7 @@
 import unittest
 from ddt import ddt, data, unpack
-from loinchpo.models.LoincId import LoincId
-from loinchpo.errors.LoincHpoParsingError import LoincHpoParsingError
+from loinchpo.model.LoincId import LoincId
+from loinchpo.error.LoincHpoParsingError import LoincHpoParsingError
 
 
 @ddt

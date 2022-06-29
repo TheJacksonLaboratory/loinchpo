@@ -1,7 +1,11 @@
-from loinchpo.errors.LoincHpoParsingError import LoincHpoParsingError
+from loinchpo.error.LoincHpoParsingError import LoincHpoParsingError
 
 
 class LoincId:
+    """
+        A class to represent a loinc id
+
+    """
     def __init__(self, loinc_id):
         self.num, self.suffix, self.loinc_id = self.parse_loinc_id(loinc_id)
 

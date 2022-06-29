@@ -1,8 +1,8 @@
 import csv
-from loinchpo.errors.LoincHpoParsingError import LoincHpoParsingError
-from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
-from loinchpo.util.AnnotationUtility import AnnotationUtility
-from loinchpo.models.LoincScale import LoincScale
+from loinchpo.error.LoincHpoParsingError import LoincHpoParsingError
+from loinchpo.error.LoincHpoValidationError import LoincHpoValidationError
+from loinchpo.io.Utility import Utility
+from loinchpo.model.LoincScale import LoincScale
 from collections import namedtuple
 
 LoincHpoAnnotation = namedtuple('LoincHpoAnnotation',
@@ -11,118 +11,76 @@ LoincHpoAnnotation = namedtuple('LoincHpoAnnotation',
 
 
 class AnnotationParser:
-    """ Provides methods for parsing Loinc2HpoAnnotation files.
+    """ Provides methods for parsing :class:`LoincHpoAnnotation` files.
 
-        Typical usage example:
-
-        annotations = AnnotationParser.parse_annotation_file(file_path)
-        annotation_map = AnnotationParser.parse_annotation_file_dict(file_path)
+        Example:
+            annotations = AnnotationParser.parse_annotation_file(file_path)
+            annotation_map = AnnotationParser.parse_annotation_file_dict(file_path)
 
     """
 
     @staticmethod
-    def parse_annotation_file(file_path):
-        """ Parsing Loinc2HpoAnnotation files to a list of namedtuples LoincHpoAnnotation.
+    def parse_annotation_file(file_path, ls=False):
+        """ A traversable dictionary of loinc_id -> loinc_measure -> negation Parsing Loinc2HpoAnnotation files to
+        either a list of namedtuples :class:`LoincHpoAnnotation`
 
         Args:
             file_path: A string file path to the annotation file.
+            ls: Should the method return a list of ::class::`LoincHpoAnnotation`
 
         Returns:
-            A list of namedtuples 'LoincHpoAnnotation'.
-
-            [LoincHpoAnnotation, LoincHpoAnnotation]
+            annotations: A dictionary of loinc_id -> loinc_measure -> negation or a list of namedtuples ::class::`LoincHpoAnnotation`
 
         Raises:
             OSError: When the file could not be opened or found.
             LoincHpoParsingError: When there were issues with file format
             LoincHpoValidationError: When there were issues with specific field expected values.
         """
-        annotations = []
 
-        try:
-            with open(file_path) as f:
-                reader = csv.reader(f, delimiter='\t')
-                # Skip first line
-                fields = next(reader)
-                # Throw exception if it doesnt look like header line.
-                if "loincId" not in fields:
-                    raise LoincHpoParsingError("Header Line not Loinc2Hpo annotation file.")
-                for line in reader:
-                    loinc_id, loinc_scale, outcome, hpo_term, supplemental_term, curators, comment = line
-
-                    # Sanity Check loinc_id and other things like in the class.
-                    AnnotationUtility.check_all(loinc_id, outcome)
-
-                    # Map the Loinc Scale
-                    loinc_scale = LoincScale.parse(loinc_scale)
-
-                    # Build named tuple if we are okay. Append to list.
-                    annotations.append(LoincHpoAnnotation(loinc_id, loinc_scale, outcome,
-                                                          hpo_term, supplemental_term, curators, comment))
-                return annotations
-        except (OSError, LoincHpoParsingError, LoincHpoValidationError) as e:
-            raise e
-
-    @staticmethod
-    def parse_annotation_file_dict(file_path):
-        """ Parsing Loinc2HpoAnnotation files to a traversable dictionary
-
-            This method has a specific return of a dictionary of dictionaries to help us query or
-            traverseannotations when resolving input queries from users.
-
-        Args:
-            file_path: A string file path to the annotation file.
-
-        Returns:
-            A dictionary of dictionaries with a specific mapping to help us query for
-            loinc code, measures and negations to get us an hpo code.
-
-            {'29298-0': {'POS': 'HP:0009281'}}
-
-            In this example we see that a loinc_id has a measure of positive and it is not negated
-            which results in an hpo code.
-
-        Raises:
-            OSError: When the file could not be opened or found.
-            LoincHpoParsingError: When there were issues with file format
-            LoincHpoValidationError: When there were issues with specific field expected values.
-        """
         annotations = {}
+        if ls:
+            annotations = []
         try:
             with open(file_path) as f:
                 reader = csv.reader(f, delimiter='\t')
                 fields = next(reader)
+
                 if "loincId" not in fields:
                     raise LoincHpoParsingError("Header Line not Loinc2Hpo annotation file.")
                 for line in reader:
                     loinc_id, loinc_scale, outcome, hpo_term, supplemental_term, curators, comment = line
 
-                    # Sanity Check loinc_id and other things like in the class.
-                    AnnotationUtility.check_all(loinc_id, outcome)
-
-                    # Map the Loinc Scale
+                    Utility.check_all(loinc_id, outcome)
                     loinc_scale = LoincScale.parse(loinc_scale)
+                    outcome = Utility.parse_outcome(outcome)
 
-                    # Build named tuple if we are okay. Append to list.
                     annotation = LoincHpoAnnotation(loinc_id, loinc_scale, outcome, hpo_term, supplemental_term,
                                                     curators, comment)
-                    if loinc_id in annotations:
-                        if annotation in annotations[loinc_id]:
-                            raise LoincHpoParsingError("Duplicate annotation exists for loinc code.")
+
+                    if not ls:
+                        if loinc_id in annotations:
+                            if annotation in annotations[loinc_id]:
+                                raise LoincHpoParsingError("Duplicate annotation exists for loinc code.")
+                            else:
+                                annotations[loinc_id].append(annotation)
                         else:
-                            annotations[loinc_id].append(annotation)
+                            annotations[loinc_id] = [annotation]
                     else:
-                        annotations[loinc_id] = [annotation]
-            return AnnotationParser._build_query_map(annotations)
+                        annotations.append(annotation)
+
+                if not ls:
+                    return AnnotationParser._build_query_map(annotations)
+                else:
+                    return annotations
         except (OSError, LoincHpoParsingError, LoincHpoValidationError) as e:
             raise e
 
     @staticmethod
-    def parse_annotation_pandas(df):
-        """ Parsing Loinc2HpoAnnotation pandas to a traversable dictionary
+    def parse_annotation(df):
+        """ Parsing pandas dataframe to a traversable dictionary
 
             This method has a specific return of a dictionary of dictionaries to help us query or
-            traverseannotations when resolving input queries from users.
+            traverse annotations when resolving input queries from users.
 
         Args:
             df: A pandas dataframe with loinc queries. (loincId, loincMeasure, negated)
@@ -138,8 +96,8 @@ class AnnotationParser:
 
         Raises:
             OSError: When the file could not be opened or found.
-            SeepParsingError: When there were issues with file format
-            SeepValidationError: When there were issues with specific field expected values.
+            LoincHpoParsingError: When there were issues with file format
+            LoincHpoValidationError: When there were issues with specific field expected values.
         """
         annotations = {}
         expected_fields = ("loincId", "loincScale", "outcome", "hpoTermId", "supplementalTermId", "curation", "comment")
@@ -152,13 +110,10 @@ class AnnotationParser:
             for row in df.iterrows():
                 loinc_id, loinc_scale, outcome, hpo_term, supplemental_term, curators, comment = row[1].tolist()
 
-                # Map the loinc scale
                 loinc_scale = LoincScale.parse(loinc_scale)
+                Utility.check_all(loinc_id, outcome)
+                outcome = Utility.parse_outcome(outcome)
 
-                # Sanity Check loinc_id and other things like in the class.
-                AnnotationUtility.check_all(loinc_id, outcome)
-
-                # Build named tuple if we are okay. Append to list.
                 annotation = LoincHpoAnnotation(loinc_id, loinc_scale, outcome, hpo_term, supplemental_term, curators,
                                                 comment)
                 if loinc_id in annotations:
@@ -172,7 +127,6 @@ class AnnotationParser:
             return AnnotationParser._build_query_map(annotations)
         except (OSError, LoincHpoParsingError, LoincHpoValidationError) as e:
             raise e
-
 
     @staticmethod
     def _build_query_map(annotations):

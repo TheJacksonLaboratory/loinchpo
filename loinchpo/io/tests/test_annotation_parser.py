@@ -2,7 +2,7 @@ import unittest
 import os
 from ddt import ddt, data
 import pandas as pd
-from loinchpo.util.AnnotationParser import AnnotationParser
+from loinchpo.io.AnnotationParser import AnnotationParser
 
 
 @ddt
@@ -18,7 +18,7 @@ class AnnotationParserTest(unittest.TestCase):
     def test_annotation_parser(self, expected_data):
         test_file = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                  'test_annotation_file.tsv')
-        annotations = AnnotationParser.parse_annotation_file(test_file)
+        annotations = AnnotationParser.parse_annotation_file(test_file, ls=True)
         self.assertEqual(len(annotations), len(expected_data))
         for annotation, expected in zip(annotations, expected_data):
             self.assertEqual(annotation.loinc_id, expected[0])
@@ -28,10 +28,10 @@ class AnnotationParserTest(unittest.TestCase):
     @data(({"2823-3": {"N": "HP:0011042", "H": "HP:0011042"}},
            {"5803-2": {"H": "HP:0032369"}},
            {"2091-7": {"H": "HP:0003362"}}))
-    def test_annotation_parser_dict(self, expected_data):
+    def test_annotation_parser_file(self, expected_data):
         test_file = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                  'test_annotation_file.tsv')
-        annotations = AnnotationParser.parse_annotation_file_dict(test_file)
+        annotations = AnnotationParser.parse_annotation_file(test_file)
         for expected in expected_data:
             key = next(iter(expected))
             self.assertEqual(expected[key], annotations[key])
@@ -47,13 +47,13 @@ class AnnotationParserTest(unittest.TestCase):
          "comment": ["", "", "", ""]
         })
     )
-    def test_annotation_pandas_dict(self, input_frame):
+    def test_annotation(self, input_frame):
         expected_data = ({"2823-3": {"N": "HP:0011042", "H": "HP:0011042"}},
            {"5803-2": {"H": "HP:0032369"}},
            {"2091-7": {"H": "HP:0003362"}})
         frame = pd.DataFrame(input_frame, columns=['loincId', 'loincScale',
         'outcome', 'hpoTermId', 'supplementalTermId', 'curation', 'comment'])
-        annotations = AnnotationParser.parse_annotation_pandas(frame)
+        annotations = AnnotationParser.parse_annotation(frame)
         for expected in expected_data:
             key = next(iter(expected))
             self.assertEqual(expected[key], annotations[key])

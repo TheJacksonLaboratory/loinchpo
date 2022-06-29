@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
-from loinchpo.errors.LoincHpoValidationError import LoincHpoValidationError
+from loinchpo.error.LoincHpoValidationError import LoincHpoValidationError
 
 
 class LoincScale(Enum):
