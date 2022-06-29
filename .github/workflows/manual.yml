@@ -34,4 +34,4 @@ jobs:
       with:
         branch: gh-pages
         clean: true
-        folder: _build
+        folder: docs/_build
