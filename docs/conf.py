@@ -13,9 +13,6 @@
 import os
 import sys
 sys.path.append(os.path.abspath('..'))
-print('****')
-print(sys.path)
-print('****')
 # -- Project information -----------------------------------------------------
 
 project = 'LoincHpo'
@@ -48,3 +45,4 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
+html_static_path = ['_static']
