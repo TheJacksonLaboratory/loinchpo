@@ -1,5 +1,6 @@
 # Docs
-./docs/_*
+docs/_*
+docs/source/
 
 # PyCharm stuff
 .idea/
