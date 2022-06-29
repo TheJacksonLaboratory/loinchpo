@@ -18,7 +18,7 @@ jobs:
         python-version: 3.9
 
     - name: install
-      run: pip3 install sphinx sphinx-rtd-theme myst_parser click ddt pandas
+      run: pip3 install sphinx sphinx-rtd-theme myst_parser click ddt pandas setuptools
 
     - name: Build documentation.
       run: |
