@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/loinchpo.svg)](https://badge.fury.io/py/loinchpo) [![Anaconda-Server Badge](https://anaconda.org/conda-forge/loinchpo/badges/version.svg)](https://anaconda.org/conda-forge/loinchpo)
+
 # loinchpo
 A simple and efficient library for mapping loinc test results to hpo terms.
 
@@ -55,12 +57,3 @@ Just three steps and you should be able to map your loinc codes to hpo.
     resolver = QueryResolver(annotations)
     hpo_term = resolver.resolve(query)
 ```
-
-
-
-
-
-
-
-
-
