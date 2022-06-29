@@ -16,7 +16,7 @@ class AnnotationResolverTest(unittest.TestCase):
     def test_loinc_id(self, expected):
         test_file = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                  'test_annotation_file.tsv')
-        annotations = AnnotationParser.parse_annotation_file_dict(test_file)
+        annotations = AnnotationParser.parse_annotation_file(test_file)
         resolver = QueryResolver(annotations)
         query = Query(expected[0], expected[1])
         self.assertEqual(resolver.resolve(query),

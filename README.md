@@ -1,3 +1,6 @@
+[![PyPI version](https://badge.fury.io/py/loinchpo.svg)](https://badge.fury.io/py/loinchpo) 
+[![Anaconda-Server Badge](https://anaconda.org/conda-forge/loinchpo/badges/version.svg)](https://anaconda.org/conda-forge/loinchpo)
+
 # loinchpo
 A simple and efficient library for mapping loinc test results to hpo terms.
 
@@ -13,13 +16,12 @@ pip install loinchpo
 ## Installing with Conda
 
 ```bash
-# Ensure conda-forge is in your channels
 conda config --add channels conda-forge
 conda config --set channel_priority strict
-
-# Install the package
 conda install loinchpo
 ```
+
+
 
 
 ## Usage
@@ -27,40 +29,30 @@ conda install loinchpo
 Just three steps and you should be able to map your loinc codes to hpo.
 
 ### 1. Parse the annotations using AnnotationParser
+A dictionary from file:
 ```python
-    # returns a list of the annotations
-    annotations = AnnotationParser.parse_annotation_file(annotation_path)
+annotations = AnnotationParser.parse_annotation_file(annotation_path)
 ```
+A list from file:
 ```python
-    # returns a dictionary query mapper
-    annotations = AnnotationParser.parse_annotation_file_dict(annotation_path)
+annotations = AnnotationParser.parse_annotation_file(annotation_path, ls=True)
 ```
+A dictionary from pandas df:
 ```python
-    # returns a dictionary query mapper from a pandas dataframe
-    annotations = AnnotationParser.parse_annotation_pandas(dataframe)
+annotations = AnnotationParser.parse_annotation(dataframe)
 ```
 
 ### 2. Parse the query files
+File path returns a list of queries:
 ```python
-    # file path returns a list of queries
-    queries = QueryFileParser.parse(query_path)
+queries = QueryFileParser.parse(query_path)
 ```
+Single query:
 ```python
-    # single query
-    query = Query(loinc_id, outcome)
+query = Query(loinc_id, outcome)
 ```
 ### 3. Resolve the hpo term
 ```python
-    # Resolve the hpo term.
-    resolver = QueryResolver(annotations)
-    hpo_term = resolver.resolve(query)
+resolver = QueryResolver(annotations)
+hpo_term = resolver.resolve(query)
 ```
-
-
-
-
-
-
-
-
-
