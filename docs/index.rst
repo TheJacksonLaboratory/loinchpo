@@ -7,6 +7,7 @@ Welcome to LoincHpo's documentation!
 ====================================
 
 .. include:: ../README.md
+   :parser: myst_parser.sphinx_
 
 .. toctree::
    :maxdepth: 4
@@ -18,4 +19,3 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
