@@ -1,6 +1,8 @@
 # Docs
 docs/_*
+docs/*.rst
 docs/source/
+!docs/index.rst
 
 # PyCharm stuff
 .idea/

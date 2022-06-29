@@ -12,7 +12,7 @@ Welcome to LoincHpo's documentation!
 .. toctree::
    :maxdepth: 4
 
-   source/modules
+   modules
 
 Indices and tables
 ==================
