@@ -24,8 +24,10 @@ jobs:
       run: |
         mkdir gh-pages
         touch gh-pages/.nojekyll
-        sphinx-apidoc -f -o docs/source loinchpo "**/tests/*"
+        ls
+        sphinx-apidoc -f -o docs/source/ loinchpo "**/tests/*"
         cd docs/
+        ls
         sphinx-build -b html . _build
 
     - name: Deploy documentation.
