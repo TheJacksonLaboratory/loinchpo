@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to LoincHpo’s documentation! &mdash; LoincHpo 1.1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="loinchpo" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> LoincHpo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">loinchpo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">LoincHpo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Welcome to LoincHpo’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-loinchpo-s-documentation">
+<h1>Welcome to LoincHpo’s documentation!<a class="headerlink" href="#welcome-to-loinchpo-s-documentation" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://badge.fury.io/py/loinchpo"><img alt="PyPI version" src="https://badge.fury.io/py/loinchpo.svg" /></a>
+<a class="reference external" href="https://anaconda.org/conda-forge/loinchpo"><img alt="Anaconda-Server Badge" src="https://anaconda.org/conda-forge/loinchpo/badges/version.svg" /></a></p>
+<section id="loinchpo">
+<h2>loinchpo<a class="headerlink" href="#loinchpo" title="Permalink to this heading"></a></h2>
+<p>A simple and efficient library for mapping loinc test results to hpo terms.</p>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h3>
+<p>Python 3.5+</p>
+</section>
+<section id="installing-with-pip">
+<h3>Installing with pip<a class="headerlink" href="#installing-with-pip" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install loinchpo
+</pre></div>
+</div>
+</section>
+<section id="installing-with-conda">
+<h3>Installing with Conda<a class="headerlink" href="#installing-with-conda" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --add channels conda-forge
+conda config --set channel_priority strict
+conda install loinchpo
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h3>
+<p>Just three steps and you should be able to map your loinc codes to hpo.</p>
+<section id="parse-the-annotations-using-annotationparser">
+<h4>1. Parse the annotations using AnnotationParser<a class="headerlink" href="#parse-the-annotations-using-annotationparser" title="Permalink to this heading"></a></h4>
+<p>A dictionary from file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">annotations</span> <span class="o">=</span> <span class="n">AnnotationParser</span><span class="o">.</span><span class="n">parse_annotation_file</span><span class="p">(</span><span class="n">annotation_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A list from file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">annotations</span> <span class="o">=</span> <span class="n">AnnotationParser</span><span class="o">.</span><span class="n">parse_annotation_file</span><span class="p">(</span><span class="n">annotation_path</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A dictionary from pandas df:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">annotations</span> <span class="o">=</span> <span class="n">AnnotationParser</span><span class="o">.</span><span class="n">parse_annotation</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="parse-the-query-files">
+<h4>2. Parse the query files<a class="headerlink" href="#parse-the-query-files" title="Permalink to this heading"></a></h4>
+<p>File path returns a list of queries:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">queries</span> <span class="o">=</span> <span class="n">QueryFileParser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">query_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Single query:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">Query</span><span class="p">(</span><span class="n">loinc_id</span><span class="p">,</span> <span class="n">outcome</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="resolve-the-hpo-term">
+<h4>3. Resolve the hpo term<a class="headerlink" href="#resolve-the-hpo-term" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">resolver</span> <span class="o">=</span> <span class="n">QueryResolver</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span>
+<span class="n">hpo_term</span> <span class="o">=</span> <span class="n">resolver</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">loinchpo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="loinchpo.html">loinchpo package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="loinchpo.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="loinchpo.error.html">loinchpo.error package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="loinchpo.io.html">loinchpo.io package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="loinchpo.model.html">loinchpo.model package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="loinchpo.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="loinchpo.html#module-loinchpo.main">loinchpo.main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="loinchpo.html#module-loinchpo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-right" title="loinchpo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, The Jackson Laboratory.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

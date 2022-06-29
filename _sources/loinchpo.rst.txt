@@ -1,0 +1,31 @@
+loinchpo package
+================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   loinchpo.error
+   loinchpo.io
+   loinchpo.model
+
+Submodules
+----------
+
+loinchpo.main module
+--------------------
+
+.. automodule:: loinchpo.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: loinchpo
+   :members:
+   :undoc-members:
+   :show-inheritance:

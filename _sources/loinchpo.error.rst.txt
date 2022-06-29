@@ -1,0 +1,29 @@
+loinchpo.error package
+======================
+
+Submodules
+----------
+
+loinchpo.error.LoincHpoParsingError module
+------------------------------------------
+
+.. automodule:: loinchpo.error.LoincHpoParsingError
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+loinchpo.error.LoincHpoValidationError module
+---------------------------------------------
+
+.. automodule:: loinchpo.error.LoincHpoValidationError
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: loinchpo.error
+   :members:
+   :undoc-members:
+   :show-inheritance:
