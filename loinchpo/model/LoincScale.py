@@ -1,7 +1,5 @@
 from enum import Enum, auto
 
-from loinchpo.error.LoincHpoValidationError import LoincHpoValidationError
-
 
 class LoincScale(Enum):
     """ An enumeration representation for the possible loinc scale types.
@@ -17,8 +15,8 @@ class LoincScale(Enum):
     SET = 8, "set",
     UNKNOWN = auto()
 
-    @classmethod
-    def parse(cls, loinc_scale):
+    @staticmethod
+    def parse(loinc_scale):
         """Mapping loinc scale to enumeration.
 
         Args:
@@ -31,7 +29,7 @@ class LoincScale(Enum):
         try:
             return LoincScale[loinc_scale.upper()]
         except (KeyError, AttributeError):
-            return cls.UNKNOWN
+            return LoincScale.UNKNOWN
 
     def __str__(self):
         if self == LoincScale.QN:
