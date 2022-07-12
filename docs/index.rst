@@ -13,6 +13,8 @@ Welcome to LoincHpo's documentation!
    :maxdepth: 4
 
    modules
+   omop
+   examples
 
 Indices and tables
 ==================

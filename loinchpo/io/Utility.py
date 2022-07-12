@@ -11,7 +11,7 @@ class Utility:
 
     @staticmethod
     def is_loinc_id(loinc_id):
-        """Determines whether or not the argument is a valid loinc id.
+        """Determines if the argument is a valid loinc id.
 
         Args:
             loinc_id: A string loinc id.
@@ -28,13 +28,13 @@ class Utility:
 
     @staticmethod
     def is_outcome(outcome):
-        """Determines whether or not the argument is a valid measure value.
+        """Determines if the argument is a valid measure value.
 
         Args:
             outcome: An observed outcome for a loinc test.
 
         Returns:
-            Boolean whether or not we accept the allowed values for provided outcome.
+            Boolean value is in allowed values for provided outcome.
         """
         return outcome is not None and outcome.upper() in {"NEG", "POS", "H", "L", "N", "NEGATIVE", "POSITIVE",
                                                            "HIGH", "LOW", "NORMAL"}
