@@ -22,7 +22,7 @@ setup(name='loinchpo',
       url='https://github.com/TheJacksonLaboratory/loinchpo',
       description='Python version of LOINC2HPO',
       license='GPLv3',
-      keywords='python, loinc to hpo',
+      keywords='python, loinc, hpo, clinical, omop, human phenotype ontology',
       entry_points={'console_scripts': [
           'loinchpo = loinchpo.main:cli'
       ]})

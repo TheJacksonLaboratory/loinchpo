@@ -1,18 +1,17 @@
 from enum import Enum, auto
 
-
 class LoincScale(Enum):
     """ An enumeration representation for the possible loinc scale types.
 
     """
     QN = 1, "qn"
     ORD = 2, "ord"
-    ORDQN = 3, "ordqn",
-    NOM = 4, "nom",
-    NAR = 5, "nar",
-    MULTI = 6, "multi",
-    DOC = 7, "doc",
-    SET = 8, "set",
+    ORDQN = 3, "ordqn"
+    NOM = 4, "nom"
+    NAR = 5, "nar"
+    MULTI = 6, "multi"
+    DOC = 7, "doc"
+    SET = 8, "set"
     UNKNOWN = auto()
 
     @staticmethod
@@ -50,3 +49,6 @@ class LoincScale(Enum):
             return "set"
         else:
             return "unknown"
+
+
+
