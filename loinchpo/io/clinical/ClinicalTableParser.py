@@ -1,45 +1,38 @@
-import pandas as pd
+import pyspark.sql.dataframe
 from loinchpo.model.ClinicalTableName import ClinicalTableName
 from loinchpo.error.ClinicalParsingError import ClinicalParsingError
 
 
 class ClinicalTableParser:
-    # Be aware we need concept as name but is not defined in orginal omop schema
+    # Be aware we need concept as name but is not defined in original omop schema
     __CLINICAL_MEASUREMENT_COLUMNS = ['measurement_id', 'measurement_concept_id', 'person_id', 'visit_occurrence_id',
                                       'measurement_date', 'value_as_number', 'range_high', 'range_low']
     __CLINICAL_CONCEPT_COLUMNS = ['concept_id', 'concept_code', 'concept_name', 'vocabulary_id', 'concept_class_id']
     __CLINICAL_CONCEPT_SYNONYM_COLUMNS = ['concept_id', 'concept_synonym_name']
     __CLINICAL_VOCABULARY_COLUMNS = ['vocabulary_version', 'vocabulary_id']
 
-    def parse_table(self, data, table_name: ClinicalTableName):
-        if isinstance(data, pd.DataFrame):
-            # Does it look like what we expect?
-            if ClinicalTableParser._required_columns_exist(data.columns, table_name):
-                return data
-        elif isinstance(data, str):
+    def parse_table(self, path, table_name: ClinicalTableName, spark_session: pyspark.sql.SparkSession, sep=',') -> pyspark.sql.DataFrame:
+        if isinstance(path, str) and spark_session is not None:
             # try to parse as csv
             try:
-                df = pd.read_csv(data, header=0, low_memory=False)
-                if not self._required_columns_exist(df.columns, table_name):
-                    raise ClinicalParsingError(
-                        "Some input columns %s are missing from required columns %s ".format(list(df.columns),
-                                                                                             self._get_required_columns(
-                                                                                                 table_name))
-                    )
-                return df
-            except pd.errors.ParseError:
-                try:
-                    df = pd.read_csv(data, header=0, sep='\t', low_memory=False)
-                    if not self._required_columns_exist(df.columns, table_name):
-                        raise ClinicalParsingError(
-                            "Some input columns %s are missing from required columns %s ".format(
-                                list(df.columns), self._get_required_columns(table_name))
+                df = spark_session.read.csv(path, header=True, sep=sep)
+                return self.verify_table(df, table_name)
+            except Exception as e:
+                if isinstance(e, ClinicalParsingError):
+                    raise e
+                else:
+                    raise ClinicalParsingError(str(e))
 
-                        )
-                    return df
-                except pd.errors.ParseError:
-                    raise ClinicalParsingError(
-                        "Error parsing clinical file, must be either path to delimited file or pandas dataframe.")
+    def verify_table(self, df, table_name):
+        if isinstance(df, pyspark.sql.dataframe.DataFrame):
+            if self._required_columns_exist(df.columns, table_name):
+                return df
+            else:
+                raise ClinicalParsingError(
+                    "Some input columns %s are missing from required columns %s ".format(list(df.columns),
+                                                                                         self._get_required_columns(
+                                                                                             table_name))
+                )
 
     def _required_columns_exist(self, input_columns, table_name):
         """
