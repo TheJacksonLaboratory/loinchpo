@@ -1,4 +1,4 @@
-from .io.QueryResolver import QueryResolver
+from loinchpo.core.QueryResolver import QueryResolver
 from .io.AnnotationParser import AnnotationParser
 from .io.QueryFileParser import QueryFileParser
 from .io.Utility import Utility

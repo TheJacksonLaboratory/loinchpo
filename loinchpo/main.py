@@ -1,7 +1,7 @@
 import sys
 import click
 from loinchpo.io.AnnotationParser import AnnotationParser
-from loinchpo.io.QueryResolver import QueryResolver
+from loinchpo.core.QueryResolver import QueryResolver
 from loinchpo.io.QueryFileParser import QueryFileParser
 
 @click.group()
