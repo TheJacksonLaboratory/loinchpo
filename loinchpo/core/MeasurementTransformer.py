@@ -1,6 +1,7 @@
 from loinchpo import ClinicalTableName
 from loinchpo.core.Cleaner import Cleaner
 import pyspark.sql.functions as F
+from pyspark.sql.functions import col, coalesce
 
 from loinchpo.error.ClinicalParsingError import ClinicalParsingError
 from loinchpo.io.clinical.ClinicalTableParser import ClinicalTableParser
@@ -34,33 +35,34 @@ class MeasurementTransformer:
         clean_df = self._process_measurement(measurement_table, concept_table)
         clean_df = self._obtain_loinc_results(clean_df)
 
-        return clean_df.select("person_id", "data_partner_id", "visit_occurrence_id", "measurement_id",
+        return clean_df.select("person_id", "visit_occurrence_id", "measurement_id",
                                "measurement_date", "concept_id", "concept_code", "concept_name", "loinc_result",
                                "value_as_concept_name", "value_as_number", "range_low", "range_high")
 
     def _process_measurement(self, measurement_table, concept_table):
         """Filters the measurement table to only include loinc measurements with a result"""
 
-        concept_table = concept_table.filter((concept_table.domain_id == "Measurement") &
+        loinc_concept_table = concept_table.filter((concept_table.domain_id == "Measurement") &
                                              (concept_table.vocabulary_id == "LOINC") &
                                              (concept_table.invalid_reason.isNull()))
+        correct_measurement_val_col = "value_as_concept_name"
+        correct_measurement_val_col = "value_as_concept_id" if "value_as_concept_name" not in measurement_table.columns else correct_measurement_val_col
+
         # Get measurement concept
-        merged = measurement_table.withColumnRenamed("measurement_concept_id", "concept_id").join(concept_table,
-                                                                                                  ["concept_id"],
-                                                                                                  "inner").filter(
-            (~measurement_table.value_as_concept_id.isNull()) & (~measurement_table.value_as_number.isNull()))
+        merged = measurement_table.withColumnRenamed("measurement_concept_id", "concept_id").filter(
+            coalesce("value_as_number", correct_measurement_val_col).isNotNull()).join(loinc_concept_table, ["concept_id"])
 
         # Figure out if we already have the column ( n3c auto joined these)
-        # Get value as concept name
-        value_concept = measurement_table.select("value_as_concept_id").dropDuplicates()
-        value_concept = value_concept.join(concept_table, value_concept.value_as_concept_id == concept_table.concept_id,
-                                           "left").select("value_as_concept_id", "concept_name").withColumnRenamed(
-            "concept_name", "value_as_concept_name")
-        merged = merged.join(value_concept, "value_as_concept_id")
+        if correct_measurement_val_col == "value_as_concept_id":
+            # Get value as concept name
+            value_concept = merged.select("value_as_concept_id").dropDuplicates()
+            value_concept = value_concept.join(concept_table, value_concept.value_as_concept_id == concept_table.concept_id,
+                                               "left").select("value_as_concept_id", "concept_name").withColumnRenamed(
+                "concept_name", "value_as_concept_name")
+            merged = merged.join(value_concept, "value_as_concept_id", "left")
+
         # remove invalid concepts that are not loinc measurements
-        merged = merged.filter(
-            (merged.domain_id == "Measurement") & (merged.vocabulary_id == "LOINC") & (merged.invalid_reason.isNull()))
-        merged = merged.select("person_id", "data_partner_id", "visit_occurrence_id",
+        merged = merged.select("person_id", "visit_occurrence_id",
                                "measurement_id", "measurement_date", "concept_id",
                                "concept_code", "concept_name", "value_as_concept_name",
                                "value_as_number", "range_high", "range_low").dropDuplicates()

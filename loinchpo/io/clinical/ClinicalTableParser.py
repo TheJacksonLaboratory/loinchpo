@@ -69,4 +69,7 @@ class ClinicalTableParser:
         """
         input_columns = [x.lower() for x in list(input_columns)]
         required_columns = ClinicalTableColumns.get(table_name)
+        mutually_exclusive = ClinicalTableColumns.get_mutually_exclusive(table_name)
+        if len(mutually_exclusive) > 0:
+            return all(x in input_columns for x in required_columns) and any(x in input_columns for x in mutually_exclusive)
         return all(x in input_columns for x in required_columns)
