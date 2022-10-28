@@ -1,7 +1,7 @@
 from loinchpo import ClinicalTableName
 from loinchpo.core.Cleaner import Cleaner
 import pyspark.sql.functions as F
-from pyspark.sql.functions import col, coalesce
+from pyspark.sql.functions import coalesce
 
 from loinchpo.error.ClinicalParsingError import ClinicalParsingError
 from loinchpo.io.clinical.ClinicalTableParser import ClinicalTableParser
@@ -23,6 +23,7 @@ class MeasurementTransformer:
             Args:
                 measurement_table: the measurement table dataframe
                 concept_table: the concept table dataframe
+                concept_synonym_table: the concept synonym dataframe
         """
         try:
             parser = ClinicalTableParser()
@@ -34,10 +35,7 @@ class MeasurementTransformer:
 
         clean_df = self._process_measurement(measurement_table, concept_table)
         clean_df = self._obtain_loinc_results(clean_df)
-
-        return clean_df.select("person_id", "visit_occurrence_id", "measurement_id",
-                               "measurement_date", "concept_id", "concept_code", "concept_name", "loinc_result",
-                               "value_as_concept_name", "value_as_number", "range_low", "range_high")
+        return clean_df
 
     def _process_measurement(self, measurement_table, concept_table):
         """Filters the measurement table to only include loinc measurements with a result"""

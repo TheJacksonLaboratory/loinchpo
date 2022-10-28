@@ -17,7 +17,7 @@ class ClinicalTableColumns:
         elif table_name == ClinicalTableName.CONCEPT_SYNONYM:
             return ['concept_id', 'concept_synonym_name']
         elif table_name == ClinicalTableName.VOCABULARY:
-            return ['vocabulary_version', 'vocabulary_id']
+            return ['vocabulary_id', 'vocabulary_version']
 
     @staticmethod
     def get_mutually_exclusive(table_name: ClinicalTableName):
