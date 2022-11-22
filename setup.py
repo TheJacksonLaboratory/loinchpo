@@ -10,7 +10,7 @@ with open("README.md", 'r') as fh:
 
 
 setup(name='loinchpo',
-      version='1.1.1',
+      version='1.1.2.dev',
       packages=find_packages(),
       install_requires=requirements,
       package_data={'':  ['tests/*']},

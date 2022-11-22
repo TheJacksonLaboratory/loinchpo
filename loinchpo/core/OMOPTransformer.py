@@ -1,4 +1,5 @@
-from pyspark import F
+from pyspark.sql.functions import udf
+from pyspark.sql.types import StringType
 
 from loinchpo.core.ConceptSynonymTransformer import ConceptSynonymTransformer
 from loinchpo.core.MeasurementTransformer import MeasurementTransformer
@@ -13,7 +14,7 @@ class OMOPTransformer:
         df = m.transform(measurement_table, concept_table)
         s = ConceptSynonymTransformer()
         df = s.transform(df, concept_table, concept_synonym_table)
-        loinc_scale_udf = F.udf(lambda x: LoincScale.infer_long(x))
+        loinc_scale_udf = udf(lambda x: LoincScale.infer_long(x), StringType())
         df = df.select("*", loinc_scale_udf("synonym_list").alias("loinc_scale_type")).dropDuplicates()
         return df.select("person_id", "visit_occurrence_id", "measurement_id",
                          "measurement_date", "concept_id", "concept_code", "concept_name", "loinc_result",

@@ -36,25 +36,25 @@ class LoincScale(Enum):
         """
             Helper function to infer long_name from a list of synonyms
         """
-
-        if "quantitative" in long_name and "ordinal" in long_name:
-            return str(LoincScale.ORDQN)
-        elif "ordinal" in long_name:
-            return str(LoincScale.ORD)
-        elif "quantitative" in long_name:
-            return str(LoincScale.QN)
-        elif "nominal" in long_name or "qualitative" in long_name:
-            return str(LoincScale.NOM)
-        elif "narrative" in long_name:
-            return str(LoincScale.NAR)
-        elif "doc" in long_name:
-            return str(LoincScale.DOC)
-        elif "set" in long_name:
-            return str(LoincScale.SET)
-        elif "multi" in long_name:
-            return str(LoincScale.MULTI)
-        elif "panel" in long_name or "pnl" in long_name or "panl" in long_name:
-            return str(LoincScale.SET)
+        if long_name is not None:
+            if "quantitative" in long_name and "ordinal" in long_name:
+                return str(LoincScale.ORDQN)
+            elif "ordinal" in long_name:
+                return str(LoincScale.ORD)
+            elif "quantitative" in long_name:
+                return str(LoincScale.QN)
+            elif "nominal" in long_name or "qualitative" in long_name:
+                return str(LoincScale.NOM)
+            elif "narrative" in long_name:
+                return str(LoincScale.NAR)
+            elif "doc" in long_name:
+                return str(LoincScale.DOC)
+            elif "set" in long_name:
+                return str(LoincScale.SET)
+            elif "multi" in long_name:
+                return str(LoincScale.MULTI)
+            elif "panel" in long_name or "pnl" in long_name or "panl" in long_name:
+                return str(LoincScale.SET)
         return str(LoincScale.UNKNOWN)
 
     def __str__(self):

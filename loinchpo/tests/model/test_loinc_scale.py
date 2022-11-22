@@ -11,7 +11,7 @@ class LoincIdTest(unittest.TestCase):
           (LoincScale.DOC, "doc"), (LoincScale.SET, "set"), (LoincScale.UNKNOWN, "UNKNOWN"))
     @unpack
     def test_loinc_scale(self, enum, scale):
-        self.assertEqual(enum, LoincScale.parse(scale.upper()))
+        self.assertEqual(enum, LoincScale.parse(scale))
 
     @data(("quantitative,calendar", "QN"), ("ordinal", "ORD"),
           ("quantitative,pizza, bear, ordinal", "ORDQN"),

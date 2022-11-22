@@ -60,6 +60,8 @@ def get_concept_synonym_columns():
 def get_concept_synonym_df(spark):
     return spark.createDataFrame([
         (1, "glucosis", 1001),
+        (1, "ordinal", 1001),
         (1, "bloody iron", 1001),
-        (2, "haus", 1002)
+        (2, "haus", 1002),
+        (2, "quantitative", 1001)
     ], get_concept_synonym_columns())
