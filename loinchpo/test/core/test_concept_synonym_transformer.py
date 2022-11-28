@@ -3,9 +3,9 @@ import unittest
 from ddt import ddt
 from pyspark.sql import SparkSession
 
-from loinchpo.core.ConceptSynonymTransformer import ConceptSynonymTransformer
-from loinchpo.core.MeasurementTransformer import MeasurementTransformer
-from loinchpo.tests.core.transformer_data import get_measurement_df, get_concept_synonym_df, get_concept_df
+from loinchpo import ConceptSynonymTransformer
+from loinchpo import MeasurementTransformer
+from .transformer_data import get_measurement_df, get_concept_synonym_df, get_concept_df
 
 
 @ddt
@@ -17,7 +17,7 @@ class ConceptSynonymTransformerTest(unittest.TestCase):
                      .master("local[*]")
                      .appName("Unit-tests")
                      .getOrCreate())
-
+        cls.spark.sparkContext.setLogLevel("ERROR")
     @classmethod
     def tearDownClass(cls):
         cls.spark.stop()
@@ -27,5 +27,5 @@ class ConceptSynonymTransformerTest(unittest.TestCase):
         df = m.transform(get_measurement_df(self.spark), get_concept_df(self.spark))
         t = ConceptSynonymTransformer()
         df = t.transform(df, get_concept_df(self.spark), get_concept_synonym_df(self.spark))
-        self.assertEquals(df.where(df.concept_id == 1).first()["synonym_list"], "glucosis,bloody iron")
+        self.assertEqual(df.where(df.concept_id == 1).first()["synonym_list"], "glucosis,ordinal,bloody iron")
 

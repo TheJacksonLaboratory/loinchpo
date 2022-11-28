@@ -1,6 +1,6 @@
 import unittest
 from ddt import ddt, data, unpack
-from loinchpo.model.LoincScale import LoincScale
+from loinchpo import LoincScale
 
 
 @ddt
@@ -19,4 +19,4 @@ class LoincIdTest(unittest.TestCase):
           ("cake, bake", "UNKNOWN"))
     @unpack
     def test_loinc_infer_long_name(self, long_name, expected):
-        self.assertEquals(LoincScale.infer_long(long_name), expected)
+        self.assertEqual(LoincScale.infer_long(long_name), expected)

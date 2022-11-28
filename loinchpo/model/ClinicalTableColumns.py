@@ -1,4 +1,4 @@
-from loinchpo import ClinicalTableName
+from loinchpo.model.ClinicalTableName import ClinicalTableName
 
 
 class ClinicalTableColumns:

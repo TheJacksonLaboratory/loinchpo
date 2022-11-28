@@ -1,9 +1,9 @@
 import os
 import unittest
 from ddt import ddt, data
-from loinchpo.io.AnnotationParser import AnnotationParser
-from loinchpo.core.QueryResolver import QueryResolver
-from loinchpo.model.Query import Query
+from loinchpo import AnnotationParser
+from loinchpo import QueryResolver
+from loinchpo import Query
 
 @ddt
 class AnnotationResolverTest(unittest.TestCase):

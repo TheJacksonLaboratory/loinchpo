@@ -1,7 +1,7 @@
 import unittest
 import os
 from ddt import ddt, data
-from loinchpo.io.QueryFileParser import QueryFileParser
+from loinchpo import QueryFileParser
 
 
 @ddt

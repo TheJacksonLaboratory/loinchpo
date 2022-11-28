@@ -4,7 +4,7 @@ from ddt import ddt, data, unpack
 from pyspark.sql import SparkSession
 
 from loinchpo import ClinicalTableName
-from loinchpo.io.clinical.ClinicalTableParser import ClinicalTableParser
+from loinchpo import ClinicalTableParser
 
 
 @ddt
@@ -17,7 +17,7 @@ class ClinicalTableParserTest(unittest.TestCase):
                      .master("local[*]")
                      .appName("Unit-tests")
                      .getOrCreate())
-
+        cls.spark.sparkContext.setLogLevel("ERROR")
     @classmethod
     def tearDownClass(cls):
         cls.spark.stop()
