@@ -38,7 +38,7 @@ conda install --use-local loinchpo
 
 #### PyPi
 ```bash
-    python3 -m unittest discover loinchpo 
+    python3 -m unittest discover 
     python3 setup.py sdist bdist_wheel
 ```
 
