@@ -4,7 +4,7 @@ from pyspark.sql import SparkSession
 from loinchpo import MeasurementTransformer
 
 # TODO: make this test more direct
-from loinchpo.core.tests.transformer_data import get_measurement_df, get_concept_df, \
+from loinchpo.tests.core.transformer_data import get_measurement_df, get_concept_df, \
     get_measurement_df_id
 
 

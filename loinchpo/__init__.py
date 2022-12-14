@@ -3,7 +3,7 @@ from .model.Query import Query
 from .model.LoincId import LoincId
 from .model.LoincScale import LoincScale
 from .model.ClinicalTableName import ClinicalTableName
-from .io.clinical.ClinicalTableParser import ClinicalTableParser
+from loinchpo.io.ClinicalTableParser import ClinicalTableParser
 from .io.AnnotationParser import AnnotationParser
 from .io.QueryFileParser import QueryFileParser
 from .core.QueryResolver import QueryResolver

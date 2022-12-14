@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 60c2b8fdf84e81d86e1aeae247057288f3bdd11cc2509a129ccd0d978eb2d16e
+  sha256: 82fc0b600598e9a0ce7374992875b22f6ea55a07b5e7f3d99789665065e0a4fa
 
 build:
   noarch: python
@@ -22,17 +22,23 @@ requirements:
     - python >=3.5
     - click
     - pandas
+    - pyspark
 
 test:
-  requires:
-    - ddt
-    - setuptools
-    - pandas
   imports:
     - loinchpo.model
     - loinchpo.io
     - loinchpo.error
     - loinchpo
+  requires:
+    - ddt
+    - setuptools
+    - pandas
+    - pyspark
+  commands:
+    - pip check
+  source_files:
+    - tests
 
 about:
   home: https://github.com/TheJacksonLaboratory/loinchpo
