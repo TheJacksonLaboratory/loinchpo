@@ -1,7 +1,7 @@
 import pyspark.sql.dataframe
 
 from loinchpo.model.ClinicalTableColumns import ClinicalTableColumns
-from loinchpo.model.ClinicalTableName import ClinicalTableName
+from loinchpo import ClinicalTableName
 from loinchpo.error.ClinicalParsingError import ClinicalParsingError
 
 

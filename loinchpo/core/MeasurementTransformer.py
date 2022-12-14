@@ -1,11 +1,10 @@
 import pyspark.sql.functions as F
 from pyspark.sql.functions import coalesce
 
-from loinchpo.model.ClinicalTableName import ClinicalTableName
-from loinchpo.io.clinical.ClinicalTableParser import ClinicalTableParser
+from loinchpo import ClinicalTableName
+from loinchpo import ClinicalTableParser
 from loinchpo.core.Cleaner import Cleaner
 from loinchpo.error.ClinicalParsingError import ClinicalParsingError
-
 
 
 class MeasurementTransformer:
@@ -42,20 +41,22 @@ class MeasurementTransformer:
         """Filters the measurement table to only include loinc measurements with a result"""
 
         loinc_concept_table = concept_table.filter((concept_table.domain_id == "Measurement") &
-                                             (concept_table.vocabulary_id == "LOINC") &
-                                             (concept_table.invalid_reason.isNull()))
+                                                   (concept_table.vocabulary_id == "LOINC") &
+                                                   (concept_table.invalid_reason.isNull()))
         correct_measurement_val_col = "value_as_concept_name"
         correct_measurement_val_col = "value_as_concept_id" if "value_as_concept_name" not in measurement_table.columns else correct_measurement_val_col
 
         # Get measurement concept
         merged = measurement_table.withColumnRenamed("measurement_concept_id", "concept_id").filter(
-            coalesce("value_as_number", correct_measurement_val_col).isNotNull()).join(loinc_concept_table, ["concept_id"])
+            coalesce("value_as_number", correct_measurement_val_col).isNotNull()).join(loinc_concept_table,
+                                                                                       ["concept_id"])
 
         # Figure out if we already have the column ( n3c auto joined these)
         if correct_measurement_val_col == "value_as_concept_id":
             # Get value as concept name
             value_concept = merged.select("value_as_concept_id").dropDuplicates()
-            value_concept = value_concept.join(concept_table, value_concept.value_as_concept_id == concept_table.concept_id,
+            value_concept = value_concept.join(concept_table,
+                                               value_concept.value_as_concept_id == concept_table.concept_id,
                                                "left").select("value_as_concept_id", "concept_name").withColumnRenamed(
                 "concept_name", "value_as_concept_name")
             merged = merged.join(value_concept, "value_as_concept_id", "left")

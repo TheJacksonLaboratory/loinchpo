@@ -1,4 +1,4 @@
-from loinchpo.io.Utility import Utility
+from loinchpo import Utility
 from loinchpo.error.LoincHpoFileValidationError import LoincHpoValidationError
 
 

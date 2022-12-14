@@ -1,8 +1,8 @@
 import csv
 from loinchpo.error.LoincHpoParsingError import LoincHpoParsingError
 from loinchpo.error.LoincHpoFileValidationError import LoincHpoValidationError
-from loinchpo.io.Utility import Utility
-from loinchpo.model.LoincScale import LoincScale
+from loinchpo import Utility
+from loinchpo import LoincScale
 from collections import namedtuple
 
 LoincHpoAnnotation = namedtuple('LoincHpoAnnotation',

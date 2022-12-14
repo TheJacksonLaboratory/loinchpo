@@ -13,7 +13,7 @@ class AnnotationSanityTest(unittest.TestCase):
 
     @data(("NEG", True), ("POS", True), ("H", True), ("X", False),
           ("", False), (None, False))
-    def test_outomce(self, item):
+    def test_outcome(self, item):
         self.assertEqual(Utility.is_outcome(item[0]), item[1])
 
     @data(("NEGATIVE", "NEG"), ("POSITIVE", "POS"), ("HIGH", "H"), ("LOW", "L"), ("NORMAL", "N"))

@@ -1,9 +1,9 @@
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
 
-from loinchpo.core.ConceptSynonymTransformer import ConceptSynonymTransformer
-from loinchpo.core.MeasurementTransformer import MeasurementTransformer
-from loinchpo.model.LoincScale import LoincScale
+from loinchpo import ConceptSynonymTransformer
+from loinchpo import MeasurementTransformer
+from loinchpo import LoincScale
 
 
 class OMOPTransformer:

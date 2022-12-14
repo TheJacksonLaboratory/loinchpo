@@ -1,10 +1,10 @@
 import unittest
 from ddt import ddt
 from pyspark.sql import SparkSession
-from loinchpo.core.MeasurementTransformer import MeasurementTransformer
+from loinchpo import MeasurementTransformer
 
 # TODO: make this test more direct
-from ..core.transformer_data import get_measurement_df, get_concept_df, \
+from loinchpo.core.tests.transformer_data import get_measurement_df, get_concept_df, \
     get_measurement_df_id
 
 
