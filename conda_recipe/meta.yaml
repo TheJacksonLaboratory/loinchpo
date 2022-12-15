@@ -1,5 +1,5 @@
 {% set name = "loinchpo" %}
-{% set version = "1.1.2.dev0" %}
+{% set version = "1.1.2.dev2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 82fc0b600598e9a0ce7374992875b22f6ea55a07b5e7f3d99789665065e0a4fa
+  sha256: 493ae3c2290dee1e48cd6f9ead71a6ba5220ef2ef5848c3b7665d90bd3b5cc57
 
 build:
   noarch: python
@@ -37,9 +37,6 @@ test:
     - pyspark
   commands:
     - pip check
-  source_files:
-    - tests
-
 about:
   home: https://github.com/TheJacksonLaboratory/loinchpo
   summary: 'Simple & Efficient Loinc To HPO for Python'
