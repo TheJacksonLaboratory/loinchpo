@@ -14,8 +14,8 @@ class AnnotationParser:
     """ Provides methods for parsing :class:`LoincHpoAnnotation` files.
 
         Example:
-            annotations = AnnotationParser.parse_annotation_file(file_path)
-            annotation_map = AnnotationParser.parse_annotation_file_dict(file_path)
+            annotations = AnnotationParser.parse_annotation_file(file_path, ls=True)
+            annotation_map = AnnotationParser.parse_annotation_file(file_path)
 
     """
 
@@ -76,7 +76,7 @@ class AnnotationParser:
             raise e
 
     @staticmethod
-    def parse_annotation(df):
+    def parse_annotations(df):
         """ Parsing pandas dataframe to a traversable dictionary
 
             This method has a specific return of a dictionary of dictionaries to help us query or

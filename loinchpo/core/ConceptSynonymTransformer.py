@@ -27,7 +27,6 @@ class ConceptSynonymTransformer:
         """
             Aggregates synonyms by concept as a comma-delimited string
         """
-
         df = df.na.fill(value="None").dropDuplicates()
         df = df.groupBy("concept_id").agg(F.collect_list("concept_synonym_name").alias("synonym_list")).dropDuplicates()
         df = df.withColumn("synonym_list", F.lower(F.array_join("synonym_list", ",")))

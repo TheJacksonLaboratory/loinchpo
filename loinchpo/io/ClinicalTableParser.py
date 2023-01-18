@@ -6,7 +6,13 @@ from loinchpo.error.ClinicalParsingError import ClinicalParsingError
 
 
 class ClinicalTableParser:
+    """ Provides methods for parsing OMOP clinical tables.
 
+        Example:
+            parser = ClinicalTableParser()
+            parser.parse_table("/some/file/path", ClinicalTableName.CONCEPT, your_context)
+
+    """
     def parse_table(self, path, table_name: ClinicalTableName, spark_session: pyspark.sql.SparkSession,
                     sep=',') -> pyspark.sql.DataFrame:
         """
