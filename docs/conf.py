@@ -20,7 +20,7 @@ copyright = '2022, The Jackson Laboratory'
 author = 'Michael Gargano'
 
 # The full version, including alpha/beta/rc tags
-release = '1.1.1'
+release = '1.2.0'
 
 
 # -- General configuration ---------------------------------------------------
