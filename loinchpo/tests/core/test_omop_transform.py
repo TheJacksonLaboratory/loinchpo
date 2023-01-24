@@ -1,4 +1,5 @@
 import unittest
+import warnings
 
 from ddt import ddt
 from pyspark.sql import SparkSession
@@ -10,6 +11,7 @@ from .transformer_data import get_measurement_df, get_concept_synonym_df, get_co
 class TestOMOPTransform(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        warnings.filterwarnings("ignore", category=ResourceWarning)
         cls.spark = (SparkSession
                      .builder
                      .master("local[*]")
@@ -19,6 +21,7 @@ class TestOMOPTransform(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.spark.stop()
+        cls.spark.sparkContext.stop()
 
 
     def test_full_transform(self):

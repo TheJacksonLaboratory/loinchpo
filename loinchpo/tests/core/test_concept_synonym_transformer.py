@@ -1,4 +1,5 @@
 import unittest
+import warnings
 
 from ddt import ddt
 from pyspark.sql import SparkSession
@@ -12,6 +13,7 @@ from .transformer_data import get_measurement_df, get_concept_synonym_df, get_co
 class ConceptSynonymTransformerTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        warnings.filterwarnings("ignore", category=ResourceWarning)
         cls.spark = (SparkSession
                      .builder
                      .master("local[*]")
@@ -20,6 +22,7 @@ class ConceptSynonymTransformerTest(unittest.TestCase):
         cls.spark.sparkContext.setLogLevel("ERROR")
     @classmethod
     def tearDownClass(cls):
+        cls.spark.sparkContext.stop()
         cls.spark.stop()
 
     def test_transform(self):

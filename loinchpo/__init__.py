@@ -1,3 +1,4 @@
+__version__ = "1.2.0"
 from .io.Utility import Utility
 from .model.Query import Query
 from .model.LoincId import LoincId

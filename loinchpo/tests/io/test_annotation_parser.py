@@ -53,7 +53,7 @@ class AnnotationParserTest(unittest.TestCase):
            {"2091-7": {"H": "HP:0003362"}})
         frame = pd.DataFrame(input_frame, columns=['loincId', 'loincScale',
         'outcome', 'hpoTermId', 'supplementalTermId', 'curation', 'comment'])
-        annotations = AnnotationParser.parse_annotation(frame)
+        annotations = AnnotationParser.parse_annotations(frame)
         for expected in expected_data:
             key = next(iter(expected))
             self.assertEqual(expected[key], annotations[key])

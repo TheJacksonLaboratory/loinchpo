@@ -1,5 +1,7 @@
 import os
 import unittest
+import warnings
+
 from ddt import ddt, data, unpack
 from pyspark.sql import SparkSession
 
@@ -12,6 +14,7 @@ class ClinicalTableParserTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        warnings.filterwarnings("ignore", category=ResourceWarning)
         cls.spark = (SparkSession
                      .builder
                      .master("local[*]")
@@ -21,6 +24,7 @@ class ClinicalTableParserTest(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.spark.stop()
+        cls.spark.sparkContext.stop()
 
     @data(
         ("concept", ClinicalTableName.CONCEPT),

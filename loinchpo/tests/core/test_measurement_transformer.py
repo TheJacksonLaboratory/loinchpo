@@ -1,4 +1,6 @@
 import unittest
+import warnings
+
 from ddt import ddt
 from pyspark.sql import SparkSession
 from loinchpo import MeasurementTransformer
@@ -12,6 +14,7 @@ from loinchpo.tests.core.transformer_data import get_measurement_df, get_concept
 class MeasurementTransformerTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        warnings.filterwarnings("ignore", category=ResourceWarning)
         cls.spark = (SparkSession
                      .builder
                      .master("local[*]")
@@ -22,6 +25,7 @@ class MeasurementTransformerTest(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.spark.stop()
+        cls.spark.sparkContext.stop()
 
     def test_omop_transform_concept_name(self):
         t = MeasurementTransformer()
