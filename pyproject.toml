@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=65.6.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "loinchpo"
+description = "A library to transform loinc measurements into hpo terms."
+authors = [
+    { name = "Michael Gargano", email = "michael.gargano@protonmail.com" }
+]
+dynamic = ['version']
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["loinc", "hpo", "clinical", "omop"]
+license = { file = "LICENSE.txt" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "click",
+    "ddt",
+    "pandas",
+    "pyspark"
+]
+
+[project.urls]
+documentation = "https://thejacksonlaboratory.github.io/loinchpo"
+repository = "https://github.com/TheJacksonLaboratory/loinchpo"
+
+[project.scripts]
+my-script = "loinchpo.main:cli"
+
+[project.optional-dependencies]
+dev = ["sphinx", "sphinx_rtd_theme", "coverage-badge", "twine"]
+
+[tool.setuptools]
+packages = ["loinchpo"]
+
+[tool.setuptools.dynamic]
+version = { attr = "loinchpo.__version__" }
+
+[tool.distutils.bdist_wheel]
+universal = true

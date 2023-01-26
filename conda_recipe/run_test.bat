@@ -1,1 +1,1 @@
-"%PREFIX%\python.exe" -m unittest discover loinchpo
+"%PREFIX%\python.exe" -m unittest discover

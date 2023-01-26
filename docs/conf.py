@@ -20,7 +20,7 @@ copyright = '2022, The Jackson Laboratory'
 author = 'Michael Gargano'
 
 # The full version, including alpha/beta/rc tags
-release = '1.1.1'
+release = '1.2.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -28,7 +28,7 @@ release = '1.1.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['myst_parser', 'sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx_rtd_theme']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx_rtd_theme']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -36,7 +36,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'p3/']
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -45,4 +45,3 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
-html_static_path = ['_static']

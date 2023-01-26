@@ -1,9 +1,9 @@
 import os
 import unittest
 from ddt import ddt, data
-from loinchpo.io.AnnotationParser import AnnotationParser
-from loinchpo.io.QueryResolver import QueryResolver
-from loinchpo.model.Query import Query
+from loinchpo import AnnotationParser
+from loinchpo import QueryResolver
+from loinchpo import Query
 
 @ddt
 class AnnotationResolverTest(unittest.TestCase):
@@ -15,7 +15,7 @@ class AnnotationResolverTest(unittest.TestCase):
           ("2091-7", "N", ""))
     def test_loinc_id(self, expected):
         test_file = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                 'test_annotation_file.tsv')
+                                 '../io/test_annotation_file.tsv')
         annotations = AnnotationParser.parse_annotation_file(test_file)
         resolver = QueryResolver(annotations)
         query = Query(expected[0], expected[1])
