@@ -53,7 +53,6 @@ htmlcov/
 .tox/
 .nox/
 .coverage
-.coverage.*
 .cache
 nosetests.xml
 coverage.xml
@@ -138,3 +137,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#venv
+p3/

@@ -1,6 +1,6 @@
-====================================
-Observational Medical Outcomes Partnership (OMOP) Common Data Model
-====================================
+======================
+OMOP Common Data Model
+======================
 "The `OMOP Common Data Model <http://https://www.ohdsi.org/data-standardization/the-common-data-model/>`_  allows for the systematic analysis of disparate observational databases.
 The concept behind this approach is to transform data contained within those databases into a common
 format (data model) as well as a common representation (terminologies, vocabularies, coding schemes),
@@ -10,12 +10,12 @@ based on the common format."
 This common data model provides us with opportunity to transform LOINC concepts in OMOP to Human Phenotype Ontology
 terms. We need three pieces of data that are important to transforming, the LOINC id, the LOINC scale type, and the value.
 
-You will need the major tables *Concept*, *Concept Synonym*, *Vocabulary* and *Measurement*.
+.. _omop:
 
 Identifying LOINC Data in OMOP
------------------
+------------------------------
 
-#. Obtain LOINC Concept & Scale values [*Concept*, *Concept Synonym*, *Vocabulary*]
+#. Obtain LOINC Concept & Scale values [*Concept*, *Concept Synonym*]
     * Filter the concept table by vocabulary for LOINC
     * Filter concept synonyms for english concepts only
     * Aggregate concept synonyms on concept_id creating a single cell for each concept with a synonym list
@@ -38,6 +38,7 @@ Identifying LOINC Data in OMOP
         postive_results = ["positive", "detected", "abnormal", "yes"]
         negative_results = ["negative", "not detected", "normal", "acceptable", "healthy", "in range", "non-reactive",
                         "nonreactive", "none detected", "none seen", "not detected/negative", "not present", "no"]
+
     * For data that does not have valid numerical data or is missing range_high, range_low we flag these as bad values, but keep them for further analysis.
 
 #. Compile Processed Patient Level Results

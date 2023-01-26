@@ -33,7 +33,7 @@ repository = "https://github.com/TheJacksonLaboratory/loinchpo"
 my-script = "loinchpo.main:cli"
 
 [project.optional-dependencies]
-dev = ["sphinx", "sphinx_rtd_theme", "myst_parser", "coverage-badge", "twine"]
+dev = ["sphinx", "sphinx_rtd_theme", "coverage-badge", "twine"]
 
 [tool.setuptools]
 packages = ["loinchpo"]

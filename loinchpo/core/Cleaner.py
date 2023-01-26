@@ -4,8 +4,8 @@ import pyspark.sql.functions as F
 class Cleaner:
     @staticmethod
     def impute_measurement_values(df):
-        """As indicated by the OMOP CDM, make sure that all negative values coming from the source, set the value_as_number to NULL,
-        with the exception of the following Measurements:
+        """As indicated by the OMOP CDM, make sure that all negative values coming from the source,
+            set the value_as_number to NULL except the following Measurements:
             - 3003396 (Base excess in Arterial blood by calculation)
             - 3002032 (Base excess in Venous blood by calculation)
             - 3006277 (QRS-Axis), 3012501 (Base excess in Blood by calculation)

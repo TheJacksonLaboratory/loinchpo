@@ -5,16 +5,38 @@
 
 Welcome to LoincHpo's documentation!
 ====================================
+|PyPI version shields.io| |Anaconda-Server Badge shields.io|
 
-.. include:: ../README.md
-   :parser: myst_parser.sphinx_
+.. |PyPI version shields.io| image:: https://img.shields.io/pypi/v/loinchpo.svg
+   :target: https://pypi.python.org/pypi/loinchpo/
+.. |Anaconda-Server Badge shields.io| image:: https://anaconda.org/conda-forge/loinchpo/badges/version.svg
+   :target: https://anaconda.org/conda-forge/loinchpo
+
+A simple and efficient library for mapping loinc test results to hpo terms.
+
+Documentation: https://thejacksonlaboratory.github.io/loinchpo/
+
+# Requirements
+
+Python > 3.5 && < 3.11
+
+ Installing with PIP::
+
+   pip install loinchpo
+
+ Installing with Conda::
+
+   conda config --add channels conda-forge
+   conda config --set channel_priority strict
+   conda install loinchpo
+
 
 .. toctree::
    :maxdepth: 4
 
-   modules
+   usage
    omop
-   examples
+   modules
 
 Indices and tables
 ==================

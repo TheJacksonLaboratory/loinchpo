@@ -10,7 +10,7 @@ class ClinicalTableParser:
 
         Example:
             parser = ClinicalTableParser()
-            parser.parse_table("/some/file/path", ClinicalTableName.CONCEPT, your_context)
+            parser.parse_table("/some/file/path", ClinicalTableName.CONCEPT, your_spark_context)
 
     """
     def parse_table(self, path, table_name: ClinicalTableName, spark_session: pyspark.sql.SparkSession,
