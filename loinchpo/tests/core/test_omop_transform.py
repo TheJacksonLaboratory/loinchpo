@@ -1,0 +1,31 @@
+import unittest
+import warnings
+
+from ddt import ddt
+from pyspark.sql import SparkSession
+
+from loinchpo import OMOPTransformer
+from .transformer_data import get_measurement_df, get_concept_synonym_df, get_concept_df
+
+@ddt
+class TestOMOPTransform(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        warnings.filterwarnings("ignore", category=ResourceWarning)
+        cls.spark = (SparkSession
+                     .builder
+                     .master("local[*]")
+                     .appName("Unit-tests")
+                     .getOrCreate())
+        cls.spark.sparkContext.setLogLevel("ERROR")
+    @classmethod
+    def tearDownClass(cls):
+        cls.spark.stop()
+        cls.spark.sparkContext.stop()
+
+
+    def test_full_transform(self):
+        transformed = OMOPTransformer.transform(get_measurement_df(self.spark), get_concept_df(self.spark),
+                                                   get_concept_synonym_df(self.spark))
+        self.assertEqual(transformed.count(), 3)
+

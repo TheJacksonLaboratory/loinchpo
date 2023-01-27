@@ -3,6 +3,7 @@ docs/_*
 docs/*.rst
 docs/source/
 !docs/index.rst
+!docs/omop.rst
 
 # PyCharm stuff
 .idea/
@@ -52,7 +53,6 @@ htmlcov/
 .tox/
 .nox/
 .coverage
-.coverage.*
 .cache
 nosetests.xml
 coverage.xml
@@ -137,3 +137,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#venv
+p3/

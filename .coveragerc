@@ -1,0 +1,4 @@
+[run]
+omit = loinchpo/tests/*
+[report]
+omit = loinchpo/tests/*

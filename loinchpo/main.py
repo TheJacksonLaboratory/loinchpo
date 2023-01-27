@@ -1,8 +1,8 @@
 import sys
 import click
-from loinchpo.io.AnnotationParser import AnnotationParser
-from loinchpo.io.QueryResolver import QueryResolver
-from loinchpo.io.QueryFileParser import QueryFileParser
+from loinchpo import AnnotationParser
+from loinchpo import QueryResolver
+from loinchpo import QueryFileParser
 
 @click.group()
 def cli():

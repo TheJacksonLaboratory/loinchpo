@@ -1,0 +1,11 @@
+concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,concept_code,valid_start_date,valid_end_date,invalid_reason
+45756805,Pediatric Cardiology,Provider,ABMS,Physician Specialty,S,OMOP4821938,1970-01-01,2099-12-31,
+45756804,Pediatric Anesthesiology,Provider,ABMS,Physician Specialty,S,OMOP4821939,1970-01-01,2099-12-31,
+45756803,Pathology-Anatomic / Pathology-Clinical,Provider,ABMS,Physician Specialty,S,OMOP4821940,1970-01-01,2099-12-31,
+45756802,Pathology - Pediatric,Provider,ABMS,Physician Specialty,S,OMOP4821941,1970-01-01,2099-12-31,
+45756801,Pathology - Molecular Genetic,Provider,ABMS,Physician Specialty,S,OMOP4821942,1970-01-01,2099-12-31,
+45756800,Microbiology,Provider,ABMS,Physician Specialty,S,OMOP4821943,1970-01-01,2099-12-31,
+45756799,Pathology - Hematology,Provider,ABMS,Physician Specialty,S,OMOP4821944,1970-01-01,2099-12-31,
+45756798,Pathology - Forensic,Provider,ABMS,Physician Specialty,S,OMOP4821945,1970-01-01,2099-12-31,
+45756797,Pathology - Clinical,Provider,ABMS,Physician Specialty,S,OMOP4821946,1970-01-01,2099-12-31,
+45756796,Pathology - Chemical,Provider,ABMS,Physician Specialty,S,OMOP4821947,1970-01-01,2099-12-31,
