@@ -4,7 +4,7 @@ docs/*.rst
 docs/source/
 !docs/index.rst
 !docs/omop.rst
-
+!docs/usage.rst
 # PyCharm stuff
 .idea/
 *.iml
