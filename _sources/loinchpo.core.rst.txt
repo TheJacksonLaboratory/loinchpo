@@ -1,0 +1,53 @@
+loinchpo.core package
+=====================
+
+Submodules
+----------
+
+loinchpo.core.Cleaner module
+----------------------------
+
+.. automodule:: loinchpo.core.Cleaner
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+loinchpo.core.ConceptSynonymTransformer module
+----------------------------------------------
+
+.. automodule:: loinchpo.core.ConceptSynonymTransformer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+loinchpo.core.MeasurementTransformer module
+-------------------------------------------
+
+.. automodule:: loinchpo.core.MeasurementTransformer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+loinchpo.core.OMOPTransformer module
+------------------------------------
+
+.. automodule:: loinchpo.core.OMOPTransformer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+loinchpo.core.QueryResolver module
+----------------------------------
+
+.. automodule:: loinchpo.core.QueryResolver
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: loinchpo.core
+   :members:
+   :undoc-members:
+   :show-inheritance:

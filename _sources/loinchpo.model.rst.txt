@@ -4,6 +4,22 @@ loinchpo.model package
 Submodules
 ----------
 
+loinchpo.model.ClinicalTableColumns module
+------------------------------------------
+
+.. automodule:: loinchpo.model.ClinicalTableColumns
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+loinchpo.model.ClinicalTableName module
+---------------------------------------
+
+.. automodule:: loinchpo.model.ClinicalTableName
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 loinchpo.model.LoincId module
 -----------------------------
 

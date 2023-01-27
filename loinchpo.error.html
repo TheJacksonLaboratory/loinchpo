@@ -1,35 +1,76 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>loinchpo.error package &mdash; LoincHpo 1.1.1 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+  <title>loinchpo.error package &mdash; LoincHpo 1.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-    <script src="_static/js/theme.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="loinchpo.io package" href="loinchpo.io.html" />
-    <link rel="prev" title="loinchpo package" href="loinchpo.html" /> 
+    <link rel="prev" title="loinchpo.core package" href="loinchpo.core.html" /> 
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+   
   <div class="wy-grid-for-nav">
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
+          
+
+          
             <a href="index.html" class="icon icon-home"> LoincHpo
+          
+
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -37,110 +78,203 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="omop.html">OMOP Common Data Model</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">loinchpo</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="loinchpo.html">loinchpo package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="loinchpo.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="loinchpo.core.html">loinchpo.core package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">loinchpo.error package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="loinchpo.io.html">loinchpo.io package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="loinchpo.model.html">loinchpo.model package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="loinchpo.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="loinchpo.html#module-loinchpo.main">loinchpo.main module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="loinchpo.html#module-loinchpo">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="loinchpo.html#loinchpo-main-module">loinchpo.main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="loinchpo.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
+            
+          
         </div>
+        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">LoincHpo</a>
+        
       </nav>
 
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
+    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
           <li><a href="modules.html">loinchpo</a> &raquo;</li>
+        
           <li><a href="loinchpo.html">loinchpo package</a> &raquo;</li>
+        
       <li>loinchpo.error package</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+          
             <a href="_sources/loinchpo.error.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
+            
   <section id="loinchpo-error-package">
-<h1>loinchpo.error package<a class="headerlink" href="#loinchpo-error-package" title="Permalink to this heading"></a></h1>
+<h1>loinchpo.error package<a class="headerlink" href="#loinchpo-error-package" title="Permalink to this heading">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
 </section>
-<section id="module-loinchpo.error.LoincHpoParsingError">
-<span id="loinchpo-error-loinchpoparsingerror-module"></span><h2>loinchpo.error.LoincHpoParsingError module<a class="headerlink" href="#module-loinchpo.error.LoincHpoParsingError" title="Permalink to this heading"></a></h2>
+<section id="module-loinchpo.error.ClinicalParsingError">
+<span id="loinchpo-error-clinicalparsingerror-module"></span><h2>loinchpo.error.ClinicalParsingError module<a class="headerlink" href="#module-loinchpo.error.ClinicalParsingError" title="Permalink to this heading">¶</a></h2>
 <dl class="py exception">
-<dt class="sig sig-object py" id="loinchpo.error.LoincHpoParsingError.LoincHpoParsingError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">loinchpo.error.LoincHpoParsingError.</span></span><span class="sig-name descname"><span class="pre">LoincHpoParsingError</span></span><a class="headerlink" href="#loinchpo.error.LoincHpoParsingError.LoincHpoParsingError" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="loinchpo.error.ClinicalParsingError.ClinicalParsingError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">loinchpo.error.ClinicalParsingError.</span></span><span class="sig-name descname"><span class="pre">ClinicalParsingError</span></span><a class="headerlink" href="#loinchpo.error.ClinicalParsingError.ClinicalParsingError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Custom parsing exception when parsing LoincHpoAnnotationFiles.</p>
 </dd></dl>
 
 </section>
-<section id="module-loinchpo.error.LoincHpoValidationError">
-<span id="loinchpo-error-loinchpovalidationerror-module"></span><h2>loinchpo.error.LoincHpoValidationError module<a class="headerlink" href="#module-loinchpo.error.LoincHpoValidationError" title="Permalink to this heading"></a></h2>
+<section id="module-loinchpo.error.LoincHpoDataValidationError">
+<span id="loinchpo-error-loinchpodatavalidationerror-module"></span><h2>loinchpo.error.LoincHpoDataValidationError module<a class="headerlink" href="#module-loinchpo.error.LoincHpoDataValidationError" title="Permalink to this heading">¶</a></h2>
 <dl class="py exception">
-<dt class="sig sig-object py" id="loinchpo.error.LoincHpoValidationError.LoincHpoValidationError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">loinchpo.error.LoincHpoValidationError.</span></span><span class="sig-name descname"><span class="pre">LoincHpoValidationError</span></span><a class="headerlink" href="#loinchpo.error.LoincHpoValidationError.LoincHpoValidationError" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="loinchpo.error.LoincHpoDataValidationError.LoincHpoDataValidationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">loinchpo.error.LoincHpoDataValidationError.</span></span><span class="sig-name descname"><span class="pre">LoincHpoDataValidationError</span></span><a class="headerlink" href="#loinchpo.error.LoincHpoDataValidationError.LoincHpoDataValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Custom exception when dataframe manipulation fails.</p>
+</dd></dl>
+
+</section>
+<section id="module-loinchpo.error.LoincHpoFileValidationError">
+<span id="loinchpo-error-loinchpofilevalidationerror-module"></span><h2>loinchpo.error.LoincHpoFileValidationError module<a class="headerlink" href="#module-loinchpo.error.LoincHpoFileValidationError" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="loinchpo.error.LoincHpoFileValidationError.LoincHpoValidationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">loinchpo.error.LoincHpoFileValidationError.</span></span><span class="sig-name descname"><span class="pre">LoincHpoValidationError</span></span><a class="headerlink" href="#loinchpo.error.LoincHpoFileValidationError.LoincHpoValidationError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Custom exception when validating fields from a LoincHpoAnnotation files</p>
 </dd></dl>
 
 </section>
+<section id="module-loinchpo.error.LoincHpoParsingError">
+<span id="loinchpo-error-loinchpoparsingerror-module"></span><h2>loinchpo.error.LoincHpoParsingError module<a class="headerlink" href="#module-loinchpo.error.LoincHpoParsingError" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="loinchpo.error.LoincHpoParsingError.LoincHpoParsingError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">loinchpo.error.LoincHpoParsingError.</span></span><span class="sig-name descname"><span class="pre">LoincHpoParsingError</span></span><a class="headerlink" href="#loinchpo.error.LoincHpoParsingError.LoincHpoParsingError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Custom parsing exception when parsing LoincHpoAnnotationFiles.</p>
+</dd></dl>
+
+</section>
 <section id="module-loinchpo.error">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-loinchpo.error" title="Permalink to this heading"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-loinchpo.error" title="Permalink to this heading">¶</a></h2>
 </section>
 </section>
 
 
            </div>
+           
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="loinchpo.html" class="btn btn-neutral float-left" title="loinchpo package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="loinchpo.io.html" class="btn btn-neutral float-right" title="loinchpo.io package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="loinchpo.core.html" class="btn btn-neutral float-left" title="loinchpo.core package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, The Jackson Laboratory.</p>
-  </div>
+    <p>
+        &#169; Copyright 2022, The Jackson Laboratory.
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+  <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

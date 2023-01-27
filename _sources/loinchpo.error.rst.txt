@@ -4,18 +4,34 @@ loinchpo.error package
 Submodules
 ----------
 
-loinchpo.error.LoincHpoParsingError module
+loinchpo.error.ClinicalParsingError module
 ------------------------------------------
 
-.. automodule:: loinchpo.error.LoincHpoParsingError
+.. automodule:: loinchpo.error.ClinicalParsingError
    :members:
    :undoc-members:
    :show-inheritance:
 
-loinchpo.error.LoincHpoValidationError module
----------------------------------------------
+loinchpo.error.LoincHpoDataValidationError module
+-------------------------------------------------
 
-.. automodule:: loinchpo.error.LoincHpoValidationError
+.. automodule:: loinchpo.error.LoincHpoDataValidationError
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+loinchpo.error.LoincHpoFileValidationError module
+-------------------------------------------------
+
+.. automodule:: loinchpo.error.LoincHpoFileValidationError
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+loinchpo.error.LoincHpoParsingError module
+------------------------------------------
+
+.. automodule:: loinchpo.error.LoincHpoParsingError
    :members:
    :undoc-members:
    :show-inheritance:

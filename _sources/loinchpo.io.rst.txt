@@ -12,18 +12,18 @@ loinchpo.io.AnnotationParser module
    :undoc-members:
    :show-inheritance:
 
-loinchpo.io.QueryFileParser module
-----------------------------------
+loinchpo.io.ClinicalTableParser module
+--------------------------------------
 
-.. automodule:: loinchpo.io.QueryFileParser
+.. automodule:: loinchpo.io.ClinicalTableParser
    :members:
    :undoc-members:
    :show-inheritance:
 
-loinchpo.io.QueryResolver module
---------------------------------
+loinchpo.io.QueryFileParser module
+----------------------------------
 
-.. automodule:: loinchpo.io.QueryResolver
+.. automodule:: loinchpo.io.QueryFileParser
    :members:
    :undoc-members:
    :show-inheritance:
